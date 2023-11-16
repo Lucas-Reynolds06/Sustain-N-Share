@@ -1,3 +1,9 @@
+-- Create States table
+CREATE TABLE States (
+    StateID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255)
+);
+
 -- Create Users table
 CREATE TABLE Users (
     UserID INT PRIMARY KEY AUTO_INCREMENT,
@@ -7,9 +13,10 @@ CREATE TABLE Users (
     Address VARCHAR(255),
     Phone VARCHAR(20),
     City VARCHAR(255),
-    State VARCHAR(255),
+    StateID INT,
     ZipCode VARCHAR(10),
-    GeoLocation GEOMETRY
+    GeoLocation GEOMETRY,
+    FOREIGN KEY (StateID) REFERENCES States(StateID)
 );
 
 -- Create Categories table
@@ -23,9 +30,11 @@ CREATE TABLE Locations (
     LocationID INT PRIMARY KEY AUTO_INCREMENT,
     Address VARCHAR(255),
     City VARCHAR(255),
-    State VARCHAR(255),
+    StateID INT,
     ZipCode VARCHAR(10),
-    GeoLocation GEOMETRY
+    GeoLocation GEOMETRY,
+    FOREIGN KEY (StateID) REFERENCES States(StateID)
+
 );
 
 -- Create Items table
@@ -58,12 +67,6 @@ CREATE TABLE Transactions (
     FOREIGN KEY (ItemID) REFERENCES Items(ItemID),
     FOREIGN KEY (DonorID) REFERENCES Users(UserID),
     FOREIGN KEY (ReceiverID) REFERENCES Users(UserID)
-);
-
--- Create States table
-CREATE TABLE States (
-    StateID INT PRIMARY KEY AUTO_INCREMENT,
-    Name VARCHAR(255)
 );
 
 -- Create Cities table
