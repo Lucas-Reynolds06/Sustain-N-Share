@@ -62,8 +62,8 @@ Insert into States (Name) values ('Nebraska')
  Insert into Categories (Name) values ('Kitchenware')
  Insert into Categories (Name) values ('Arts & Crafts Supplies')
  --Create default user
- Insert into Users (Username, Email, Password, Address, Phone, City, StateID, Zipcode, Geolocation) values ('Lucas','lucasreynolds@email.com','password1', '123 North Street', '801-555-1234','Salt Lake City', 44, '12345','POINT(40.524 111.8638)')
+ Insert into Users (Username, Email, Password, Address, Phone, City, StateID, ZipCode, Geolocation) values ('Lucas','lucasreynolds@email.com','password1', '123 North Street', '801-555-1234','Salt Lake City', 44, '12345','POINT(40.524 111.8638)')
  --Create default location
- Insert into Locations (Address, City, StateID, Zipcode, Geolocation) values ('123 North Street', 'Salt Lake City', 44, '12345', 'POINT(40.524 111.8638)')
+ Insert into Locations (Address, City, StateID, ZipCode, Geolocation) values ('123 North Street', 'Salt Lake City', 44, '12345', 'POINT(40.524 111.8638)')
 --Create default item
  Insert into Items (Name, Description, CategoryID, Condition, DonorID, DateListed, LocationID) values ('Nintendo Switch','Comes with some games such as Mario Cart 8 Deluxe', 2, 'Very good',1,'2023-11-16',1)
