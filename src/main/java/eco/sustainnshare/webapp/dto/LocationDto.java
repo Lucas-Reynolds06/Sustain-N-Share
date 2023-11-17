@@ -5,15 +5,13 @@ import lombok.*;
 
 @Getter
 @Setter
-@JsonIgnoreProperties (ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
-    private int userID;
-    private String username;
+public class LocationDto {
+    private int locationID;
     private String address;
-    private String phone;
     private String city;
     private String state;
     private String zipCode;

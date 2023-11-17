@@ -1,3 +1,8 @@
+--Create Conditions table
+Create Table Conditions (
+    ConditionID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(255)
+);
 -- Create States table
 CREATE TABLE States (
     StateID INT PRIMARY KEY AUTO_INCREMENT,
@@ -43,7 +48,7 @@ CREATE TABLE Items (
     Name VARCHAR(255),
     Description TEXT,
     CategoryID INT,
-    Condition VARCHAR(100),
+    ConditionID INT,
     DonorID INT,
     ReceiverID INT NULL,
     DateListed DATE,
@@ -52,7 +57,8 @@ CREATE TABLE Items (
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID),
     FOREIGN KEY (DonorID) REFERENCES Users(UserID),
     FOREIGN KEY (ReceiverID) REFERENCES Users(UserID),
-    FOREIGN KEY (LocationID) REFERENCES Locations(LocationID)
+    FOREIGN KEY (LocationID) REFERENCES Locations(LocationID),
+    FOREIGN Key (ConditionID) REFERENCES Conditions(ConditionID)
 );
 
 -- Create Transactions table
@@ -68,12 +74,3 @@ CREATE TABLE Transactions (
     FOREIGN KEY (DonorID) REFERENCES Users(UserID),
     FOREIGN KEY (ReceiverID) REFERENCES Users(UserID)
 );
-
--- Create Cities table
-CREATE TABLE Cities (
-    CityID INT PRIMARY KEY AUTO_INCREMENT,
-    Name VARCHAR(255),
-    StateID INT,
-    FOREIGN KEY (StateID) REFERENCES States(StateID)
-);
-
