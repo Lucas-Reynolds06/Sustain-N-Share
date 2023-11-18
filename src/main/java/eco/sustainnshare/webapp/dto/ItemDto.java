@@ -2,6 +2,7 @@ package eco.sustainnshare.webapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -18,6 +19,7 @@ public class ItemDto {
     private String category;
     private String condition;
     private String donor;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateListed;
     private String location;
 }
