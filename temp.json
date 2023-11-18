@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "address_components": [
+        {
+          "long_name": "84020",
+          "short_name": "84020",
+          "types": [
+            "postal_code"
+          ]
+        },
+        {
+          "long_name": "Draper",
+          "short_name": "Draper",
+          "types": [
+            "locality",
+            "political"
+          ]
+        },
+        {
+          "long_name": "Utah",
+          "short_name": "UT",
+          "types": [
+            "administrative_area_level_1",
+            "political"
+          ]
+        },
+        {
+          "long_name": "United States",
+          "short_name": "US",
+          "types": [
+            "country",
+            "political"
+          ]
+        }
+      ],
+      "formatted_address": "Draper, UT 84020, USA",
+      "geometry": {
+        "bounds": {
+          "northeast": {
+            "lat": 40.5443619,
+            "lng": -111.804519
+          },
+          "southwest": {
+            "lat": 40.4425619,
+            "lng": -111.9236829
+          }
+        },
+        "location": {
+          "lat": 40.4960215,
+          "lng": -111.8687825
+        },
+        "location_type": "APPROXIMATE",
+        "viewport": {
+          "northeast": {
+            "lat": 40.5443619,
+            "lng": -111.804519
+          },
+          "southwest": {
+            "lat": 40.4425619,
+            "lng": -111.9236829
+          }
+        }
+      },
+      "place_id": "ChIJm_3Woop9UocRsxsiyiBUo_c",
+      "postcode_localities": [
+        "Bluffdale",
+        "Draper"
+      ],
+      "types": [
+        "postal_code"
+      ]
+    }
+  ],
+  "status": "OK"
+}
