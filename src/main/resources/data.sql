@@ -61,6 +61,7 @@ Insert into States (Name) values ('Nebraska')
  Insert into Categories (Name) values ('Gardening Tools')
  Insert into Categories (Name) values ('Kitchenware')
  Insert into Categories (Name) values ('Arts & Crafts Supplies')
+ Insert into Categories (Name) values ('Other')
  --Insert conditions
  Insert into Conditions (Name) values ('New')
  Insert into Conditions (Name) values ('Used - Excellent Quality')
