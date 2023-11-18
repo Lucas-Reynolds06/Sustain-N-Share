@@ -26,10 +26,9 @@ public class Items {
     @ManyToOne
     @JoinColumn(name = "CategoryID")
     private Categories category;
-    @Column (name = "Condition")
     @ManyToOne
     @JoinColumn(name = "ConditionID")
-    private Categories condition;
+    private Conditions condition;
     @ManyToOne
     @JoinColumn(name = "DonorID")
     private Users donor;
