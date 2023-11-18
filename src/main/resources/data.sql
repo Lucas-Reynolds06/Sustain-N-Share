@@ -74,4 +74,5 @@ Insert into States (Name) values ('Nebraska')
  --Create default location
  Insert into Locations (Address, City, StateID, ZipCode, Geolocation) values ('123 North Street', 'Salt Lake City', 44, '12345', 'POINT(40.524 111.8638)')
 --Create default item
- Insert into Items (Name, Description, CategoryID, ConditionID, DonorID, DateListed, LocationID) values ('Nintendo Switch','Comes with some games such as Mario Cart 8 Deluxe', 2, 2,1,'2023-11-16',1)
+ Insert into Items (Name, Description, CategoryID, ConditionID, DonorID, DateListed, LocationID) values ('Nintendo Switch','Comes with some games such as Mario Cart 8 Deluxe', 2, 2, 1,'2023-11-16',1)
+
