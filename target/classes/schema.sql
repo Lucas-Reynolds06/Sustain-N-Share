@@ -68,12 +68,3 @@ CREATE TABLE Transactions (
     FOREIGN KEY (DonorID) REFERENCES Users(UserID),
     FOREIGN KEY (ReceiverID) REFERENCES Users(UserID)
 );
-
--- Create Cities table
-CREATE TABLE Cities (
-    CityID INT PRIMARY KEY AUTO_INCREMENT,
-    Name VARCHAR(255),
-    StateID INT,
-    FOREIGN KEY (StateID) REFERENCES States(StateID)
-);
-

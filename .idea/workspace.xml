@@ -5,24 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="754d3875-7e8a-4069-bad2-b7cec08120cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/dto/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/Locations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/States.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/Users.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/repository/UsersRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/ItemsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/UsersService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/UsersServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/dto/CategoryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/dto/ConditionDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/dto/ItemDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/dto/LocationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/Categories.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/Conditions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/Items.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/Transactions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/repository/CategoriesRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/repository/ItemsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/CategoriesService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/CategoriesServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/ItemsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/home/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/home/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/ItemsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/ItemsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
