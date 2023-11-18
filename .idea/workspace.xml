@@ -21,6 +21,10 @@
       <change beforePath="$PROJECT_DIR$/target/classes/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/sharing-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/sharing-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/Items.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/repository/ItemsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/repository/ItemsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/sharing-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/sharing-page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +150,8 @@
           <url>file://$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/sharingpage/ItemController.java</url>
           <line>25</line>
           <option name="timeStamp" value="3" />
+          <line>18</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
