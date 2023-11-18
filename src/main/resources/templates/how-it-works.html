@@ -10,6 +10,38 @@
 <body>
 <div th:insert="fragments/header.html :: header"/>
 <h1>How It Works</h1>
+
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="donate-tab" data-toggle="tab" href="#donate" role="tab" aria-controls="donate" aria-selected="true">Donate an Item</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="find-tab" data-toggle="tab" href="#find" role="tab" aria-controls="find" aria-selected="false">Find an Item</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane active" id="donate" role="tabpanel" aria-labelledby="donate-tab">
+      <h2>How to Upload Your Used Items</h2>
+      <ol type="1">
+        <li>Create an Account/Login</li>
+        <li>Tea</li>
+        <li>Milk</li>
+      </ol>
+    </div>
+    <div class="tab-pane" id="find" role="tabpanel" aria-labelledby="find-tab">
+      <!-- Your profile content goes here -->
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <div th:insert="fragments/footer.html :: footer"/>
 </body>
 </html>

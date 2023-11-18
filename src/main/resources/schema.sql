@@ -1,5 +1,5 @@
 --Create Conditions table
-Create Table Conditions (
+CREATE TABLE Conditions (
     ConditionID INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(255)
 );
