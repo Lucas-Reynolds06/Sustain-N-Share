@@ -22,7 +22,7 @@ public class ItemsSpecification {
             if (category == null){
                 return criteriaBuilder.isTrue(criteriaBuilder.literal(true));
             }
-            return criteriaBuilder.equal(root.join("category").get("categoryId"),category);
+            return criteriaBuilder.equal(root.join("category").get("categoryID"),category);
         });
     }
     public static Specification<Items> hasLocation(Locations location){

@@ -9,7 +9,9 @@
 </head>
 <body>
 <div th:insert="fragments/header.html :: header"/>
-<h1>Hello World</h1>
+<div th:each="items: ${items}">
+    <div th:text="${items.name}"></div>
+</div>
 <div th:insert="fragments/footer.html :: footer"/>
 </body>
 </html>
