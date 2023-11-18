@@ -5,26 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17c6221b-bfe2-4203-970d-a484d8475d1d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/dto/SearchItemDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/ItemSearchService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/ItemSearchServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/ItemsSpecification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/sharingpage/ItemController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/items.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/items.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/repository/ConditionsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/ConditionsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/services/ConditionsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/search-form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/dto/ItemDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/dto/SearchItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/dto/SearchItemDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/Items.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/repository/ItemsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/repository/ItemsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/sharingpage/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/sharingpage/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/sharingpage/SharingPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/sharingpage/SharingPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/sharing-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/sharing-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/items.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/items.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/sharing-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/sharing-page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/entity/Items.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/repository/ItemsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/repository/ItemsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/sharing-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/sharing-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/items.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/items.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +29,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -148,10 +142,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/eco/sustainnshare/webapp/sharingpage/ItemController.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="3" />
-          <line>18</line>
-          <option name="timeStamp" value="1" />
+          <line>55</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
