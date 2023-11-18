@@ -15,6 +15,6 @@ public class SearchItemDto {
     private String city;
     private String state;
     private String zipCode;
-    private int condition;
+    private Integer condition;
     private Date timeOnSite;
 }
