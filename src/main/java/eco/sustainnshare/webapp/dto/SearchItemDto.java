@@ -3,6 +3,7 @@ package eco.sustainnshare.webapp.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -16,5 +17,7 @@ public class SearchItemDto {
     private String state;
     private String zipCode;
     private Integer condition;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date timeOnSite;
+    private Integer radius;
 }
