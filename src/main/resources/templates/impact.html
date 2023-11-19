@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sustain N Share</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body style="background-color:rgba(248,254,229,255)">
+<div th:insert="fragments/header.html :: header"/>
+<div class="container-fluid p-0">
+  <div class="row no-gutters">
+    <div class="col-12">
+      <div class="hero-image" style="background-image: url('earth.jpg');">
+        <div class="hero-text d-flex align-items-center justify-content-center text-center">
+          <div>
+            <h1 class="text-white">Empowering Communities, Protecting the Planet</h1>
+            <p class="lead text-white">Join us in our mission to create a sustainable future.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container fluid eco-friendly-section" style="padding:80px;">
+      <h2 class="eco-header text-center">Our Environmental Impact: Making a Difference Together</h2>
+
+      <h3 class="eco-header">A Sustainable Journey for Every Item</h3>
+      <p>At Sustain n' Share, we believe in the power of community and sustainability. Our platform isn't just about sharing items; it's a movement towards a more environmentally responsible way of living. Every item exchanged here is more than a simple transaction – it's a statement of care for our planet.</p>
+
+      <h3 class="eco-header">The Impact of Your Contributions</h3>
+      <p>Every piece of furniture, article of clothing, electronic device, and household item shared on our site contributes to a larger cause: reducing waste, saving resources, and lessening our carbon footprint. By choosing to participate in Sustain n' Share, you're making a direct impact on our environment. Here's how:</p>
+      <ul>
+        <li><strong>Reducing Waste</strong>: Every item reused is one less in our landfills. We're combating the global waste crisis, one exchange at a time.</li>
+        <li><strong>Conserving Resources</strong>: From water saved by not producing new clothes to the raw materials preserved in furniture and electronics, your choices help conserve precious resources.</li>
+        <li><strong>Lowering Emissions</strong>: By reusing, we reduce the emissions associated with manufacturing new products. Every item has a story, and each reuse means a smaller carbon footprint.</li>
+      </ul>
+
+      <h3 class="eco-header">Real-Time Tracking, Real Impact</h3>
+      <p>Our Eco-Impact Tracker provides real-time insights into the environmental savings achieved through your generosity and needs. This tool quantifies the tangible impact of every exchange – whether it's the CO2 emissions saved by passing on a piece of furniture or the water conserved through clothing reuse.</p>
+
+      <h3 class="eco-header">Why It Matters</h3>
+      <p>In a world facing environmental challenges, actions like yours make a difference. By participating in Sustain n' Share, you're part of a community dedicated to sustainability and responsible consumption. You're not just sharing items; you're nurturing a healthier planet for future generations.</p>
+
+      <h3 class="eco-header">Our Collective Achievements</h3>
+      <p>Together, we've made significant strides:
+      <ul>
+        <li>Tons of E-Waste Averted</li>
+        <li>Millions of Liters of Water Saved</li>
+        <li>Significant Reduction in CO2 Emissions</li>
+      </ul>
+      </p>
+
+      <h3 class="eco-header">Join Us in Making a Difference</h3>
+      <p>Every item you share or acquire through Sustain n' Share helps write a new chapter in our collective environmental story. Be a part of this journey. Together, let's create a sustainable future, one shared item at a time.</p>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-12">
+        <img src="infographic.png" alt="An info graphic about what upcycling can do" class="img-fluid">
+      </div>
+      <div class="container stats"  style="margin-top: 30px;">
+        <div class="counter" id="waterSaved">
+          <h2 class="count" data-target="500000">0</h2>
+          <p>Gallons of Water Saved</p>
+        </div>
+        <div class="counter" id="co2Saved">
+          <h2 class="count" data-target="20000">0</h2>
+          <p>Tons of CO2 Emissions Saved</p>
+        </div>
+        <div class="counter" id="electricitySaved">
+          <h2 class="count" data-target="30000">0</h2>
+          <p>Kilowatt-Hours of Electricity Saved</p>
+        </div>
+      </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card" style="margin-left:20px;padding-top: 30px; padding-bottom: 10px;" id="calculatorCard">
+            <div class="card-body">
+              <h3 class="card-title text-center text-success">Environmental Impact Calculator</h3>
+              <p class="text-center">Calculate the positive impact of your donations and acquisitions.</p>
+
+              <div id="itemCalculator">
+                <div id="itemRows">
+                  <div class="form-row align-items-center mb-2 item-row">
+                    <div class="col">
+                      <select class="form-control item-type">
+                        <option value="clothing">Clothing</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="vehicles">Vehicles</option>
+                        <option value="books">Books and Education Materials</option>
+                        <option value="toys">Toys</option>
+                        <option value="appliances">Appliances</option>
+                        <option value="sports">Sports Equipment</option>
+                      </select>
+                    </div>
+                    <div class="col">
+                      <select class="form-control item-quantity">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                      </select>
+                    </div>
+                    <div class="col-auto">
+                      <button type="button" class="btn btn-primary add-row">+</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-success" id="calculateImpact">Calculate</button>
+              </div>
+              <div id="totalImpact" class="mt-3 text-center"></div>
+              <div>
+                <div>
+                  **Note impact points are calculated as follows:
+                </div>
+                <div>
+                  <ul style="font-size:8pt">
+                    <li>
+                      Furniture: CO2 Emissions Saved (70 kg): 50 points
+                    </li>
+                    <li>
+                      Clothing: Water Saved, Chemicals Avoided: 30 points
+                    </li>
+                    <li>
+                      Electronics: E-Waste Reduction: 30 points
+                    </li>
+                    <li>
+                      Vehicles: Emmissions and Resource Conservation: 100 points
+                    </li>
+                    <li>
+                      Books and Education Materials: Paper Used Per Book: 15 points
+                    </li>
+                    <li>
+                      Toys: Plastic Reduction and Carbon Footprint: 25
+                    </li>
+                    <li>
+                      Household Appliances: Resource Efficiency and Energy Reduction: 60 points
+                    </li>
+                    <li>
+                      Sports Equipment: Material Used: 20 points
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <img id="garbage" src="tree.jpg" alt="Landfill image" class="img-fluid">
+        </div>
+      </div>
+  </div>
+</div>
+<div th:insert="fragments/footer.html :: footer"/>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const itemRows = document.getElementById('itemRows');
+    const calculateImpactButton = document.getElementById('calculateImpact');
+    const totalImpactDisplay = document.getElementById('totalImpact');
+    const garbageImage = document.getElementById('garbage');
+    const calculatorCard = document.getElementById('calculatorCard');
+
+    const adjustImageSize = () => {
+      garbageImage.style.height = calculatorCard.offsetHeight + 'px';
+    }
+
+    const handleAddRow = (e) => {
+      if (e.target.classList.contains('add-row')) {
+        var newRow = e.target.closest('.item-row').cloneNode(true);
+        newRow.querySelector('.add-row').style.display = 'inline-block';
+        e.target.style.display = 'none';
+        itemRows.appendChild(newRow);
+        newRow.querySelector('.item-type').selectedIndex = 0;
+        newRow.querySelector('.item-quantity').selectedIndex = 0;
+        setTimeout(adjustImageSize, 10);
+      }
+      adjustImageSize();
+    };
+
+    const handleCalculateImpact = () => {
+      var rows = itemRows.querySelectorAll('.item-row');
+      var totalImpact = 0;
+
+      rows.forEach(row => {
+        var itemType = row.querySelector('.item-type').value;
+        var itemQuantity = parseInt(row.querySelector('.item-quantity').value, 10);
+        totalImpact += calculateImpact(itemType, itemQuantity);
+      });
+
+      totalImpactDisplay.innerText = 'Total Impact: ' + totalImpact;
+    };
+
+    itemRows.addEventListener('click', handleAddRow);
+
+    calculateImpactButton.addEventListener('click', handleCalculateImpact);
+    adjustImageSize();
+  });
+
+  function calculateImpact(itemType, quantity) {
+    var impactPerItem = 0;
+
+    switch (itemType) {
+      case 'clothing':
+        impactPerItem = 30;
+        break;
+      case 'furniture':
+        impactPerItem = 50;
+        break;
+      case 'electronics':
+        impactPerItem = 30;
+        break;
+      case 'vehicles':
+        impactPerItem = 100;
+        break;
+      case 'books':
+        impactPerItem = 15;
+        break;
+      case 'toys':
+        impactPerItem = 25;
+        break;
+      case 'appliances':
+        impactPerItem = 60;
+        break;
+      case 'sports':
+        impactPerItem = 20;
+        break;
+    }
+
+    return impactPerItem * quantity;
+  }
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const counters = document.querySelectorAll('.count');
+    const speed = 1500; // The lower the slower
+
+    const animateCounter = (counter) => {
+      const target = +counter.getAttribute('data-target');
+      const increment = target / speed;
+
+      const updateCount = () => {
+        const count = +counter.innerText;
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(updateCount, 1);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+
+      updateCount();
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 }); // Trigger when 50% of the element is in view
+
+    counters.forEach(counter => {
+      observer.observe(counter);
+    });
+  });
+
+
+</script>
+</body>
+</html>
