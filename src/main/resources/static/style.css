@@ -1,6 +1,6 @@
 header, footer {
     width: 100%;
-    /* Add any additional styling for header and footer */
+
 }
 
 .carousel-item {
@@ -11,4 +11,117 @@ header, footer {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+.hero-image {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.info-graphic {
+    background-size: cover;
+    background-position: center;
+    height: 115vh;
+}
+
+.hero-text {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#itemCalculator .item-row {
+    margin-bottom: 10px;
+}
+
+.card {
+    border-color: #28a745;
+}
+
+.card-title {
+    color: #155724;
+}
+
+.add-row {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.add-row:hover {
+    background-color: #4cae4c;
+}
+
+#totalImpact {
+    color: #155724;
+    font-weight: bold;
+}
+
+.eco-friendly-section {
+    color: #333;
+    padding: 20px;
+}
+
+.eco-header {
+    color: #155724;
+}
+
+.eco-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background: #f0f0f0;
+}
+
+.counter {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#waterSaved {
+    background: #ADD8E6;
+}
+
+#co2Saved {
+    background: #B2BEB5;
+}
+
+#electricitySaved {
+    background: #D9D9D9;
+}
+
+.count {
+    font-size: 40px;
+    color: #333333;
+    margin: 0;
+}
+
+.counter p {
+    margin: 5px 0 0;
+    font-size: 18px;
+    color: #555;
+}
+
+.item-row:not(:last-child) .add-row {
+    display: none;
+}
+
+#garbage {
+    width: 100%;
+    height: auto;
+    transition: height 0.3s ease;
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
 }
