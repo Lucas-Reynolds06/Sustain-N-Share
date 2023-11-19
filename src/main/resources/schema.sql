@@ -74,3 +74,15 @@ CREATE TABLE Transactions (
     FOREIGN KEY (DonorID) REFERENCES Users(UserID),
     FOREIGN KEY (ReceiverID) REFERENCES Users(UserID)
 );
+
+-- Create the Blog table
+CREATE TABLE BlogPost (
+    BlogPostID INT PRIMARY KEY  AUTO_INCREMENT,
+    Title VARCHAR(255),
+    Abstract VARCHAR(500),
+    Content TEXT,
+    --PostedOn DATE,
+    AuthorID INT,
+    Category VARCHAR(100),
+    FOREIGN KEY (AuthorID) REFERENCES  Users(UserID)
+);
