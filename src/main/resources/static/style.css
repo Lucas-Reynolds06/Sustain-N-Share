@@ -172,3 +172,12 @@ header, footer {
 .card {
     position: relative;
 }
+
+.bg-image {
+    background-size: cover;
+    background-position: center;
+}
+.card-container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
