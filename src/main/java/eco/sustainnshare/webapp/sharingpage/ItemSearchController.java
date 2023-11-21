@@ -6,7 +6,6 @@ import eco.sustainnshare.webapp.dto.SearchItemDto;
 import eco.sustainnshare.webapp.entity.Categories;
 import eco.sustainnshare.webapp.entity.Conditions;
 import eco.sustainnshare.webapp.entity.Items;
-import eco.sustainnshare.webapp.repository.CategoriesRepository;
 import eco.sustainnshare.webapp.services.CategoriesService;
 import eco.sustainnshare.webapp.services.ConditionsService;
 import eco.sustainnshare.webapp.services.ItemSearchService;
@@ -21,7 +20,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public class ItemController {
+public class ItemSearchController {
     private final ItemSearchService itemSearchService;
     private final CategoriesService categoriesService;
     private final ConditionsService conditionsService;
