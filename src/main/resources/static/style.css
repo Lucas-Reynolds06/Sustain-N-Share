@@ -12,6 +12,16 @@ header, footer {
     background-size: cover;
 }
 
+.accordion {
+    --bs-accordion-bg: #f9fbe4;
+    --bs-accordion-color: #226b32;
+    --bs-accordion-active-bg: #74a984;
+    --bs-accordion-btn-bg: #c2e2bf;
+    --bs-accordion-btn-color: #226b32;
+    --bs-accordion-active-color: #226b32;
+    --bs-accordion-border-color: #c2e2bf;
+}
+
 .hero-image {
     background-size: cover;
     background-position: center;
