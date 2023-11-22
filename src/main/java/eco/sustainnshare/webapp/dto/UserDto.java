@@ -20,4 +20,6 @@ public class UserDto {
     private String city;
     private String state;
     private String zipCode;
+    private String avatarLocation;
+    private String screenName;
 }

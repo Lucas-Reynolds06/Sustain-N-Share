@@ -35,4 +35,10 @@ public class Users {
     private String zipCode;
     @Column (columnDefinition = "geometry(Point,4326)", name = "GeoLocation")
     private Point geoLocation;
+    @ManyToOne
+    @JoinColumn(name = "AvatarID")
+    private Avatar avatar;
+    @Column(name="ScreenName")
+    private String screenName;
+
 }
