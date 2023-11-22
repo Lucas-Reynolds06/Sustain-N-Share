@@ -55,5 +55,9 @@ public class Users {
     private Boolean accountNonLocked = true;
     private Boolean credentialsNonExpired = true;
     private Boolean enabled = true;
-
+    @ManyToOne
+    @JoinColumn(name = "AvatarID")
+    private Avatar avatar;
+    @Column(name="ScreenName")
+    private String screenName;
 }
