@@ -9,6 +9,12 @@ CREATE TABLE States (
     Name VARCHAR(255)
 );
 
+-- Create Avatar table
+CREATE TABLE Avatar (
+    AvatarID INT PRIMARY KEY AUTO_INCREMENT,
+    Location VARCHAR(100)
+);
+
 -- Create Users table
 CREATE TABLE Users (
     UserID INT PRIMARY KEY AUTO_INCREMENT,
@@ -21,7 +27,10 @@ CREATE TABLE Users (
     StateID INT,
     ZipCode VARCHAR(10),
     GeoLocation GEOMETRY,
-    FOREIGN KEY (StateID) REFERENCES States(StateID)
+    AvatarID INT,
+    ScreenName VARCHAR(100),
+    FOREIGN KEY (StateID) REFERENCES States(StateID),
+    FOREIGN KEY (AvatarID) REFERENCES Avatar(AvatarID)
 );
 
 -- Create Categories table
@@ -86,3 +95,4 @@ CREATE TABLE BlogPost (
     Category VARCHAR(100),
     FOREIGN KEY (AuthorID) REFERENCES  Users(UserID)
 );
+
