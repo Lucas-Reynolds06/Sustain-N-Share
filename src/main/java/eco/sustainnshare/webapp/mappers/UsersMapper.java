@@ -27,6 +27,7 @@ public class UsersMapper {
                 .lastName(user.getLastName())
                 .email(user.getEmail())
                 .state(user.getState().getName())
+                .avatarLocation(user.getAvatar().getLocation())
                 .build();
     }
 
