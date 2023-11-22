@@ -24,6 +24,6 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
         return new MySecurityUser(user.getUsername(), user.getPassword(), true, true, true, true,
-                new HashSet<GrantedAuthority>(), "First","Last", user.getEmail());
+                new HashSet<GrantedAuthority>(), user.getFirstName(),user.getLastName(), user.getEmail());
     }
 }
