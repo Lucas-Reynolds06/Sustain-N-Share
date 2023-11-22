@@ -47,21 +47,7 @@ public class SignUpController {
     @GetMapping("/profile")
     public String profile(Model model) {
         var user = userService.getUserByID(1);
-        var userDto = UserDto.builder()
-                        .userID(user.getUserID())
-                .username(user.getUsername())
-                .email(user.getEmail())
-                .firstName("First")
-                .lastName("Last")
-                .address(user.getAddress())
-                .phone(user.getPhone())
-                .city(user.getCity())
-                .state(user.getState().getName())
-                .zipCode(user.getZipCode())
-                .avatarLocation(user.getAvatar().getLocation())
-                .build();
-
-        model.addAttribute("user", userDto);
+        model.addAttribute("user", user);
         return "profile";
     }
 }
