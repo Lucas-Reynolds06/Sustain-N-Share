@@ -3,6 +3,8 @@ package eco.sustainnshare.webapp.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @JsonIgnoreProperties (ignoreUnknown = true)
@@ -12,6 +14,11 @@ import lombok.*;
 public class UserDto {
     private int userID;
     private String username;
+    private List<AuthorityDto> authorities;
+    private Boolean accountNonExpired;
+    private Boolean accountNonLocked;
+    private Boolean credentialsNonExpired;
+    private Boolean enabled;
     private String email;
     private String firstName;
     private String lastName;
@@ -20,4 +27,5 @@ public class UserDto {
     private String city;
     private String state;
     private String zipCode;
+    private String password;
 }

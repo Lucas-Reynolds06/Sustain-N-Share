@@ -13,6 +13,12 @@ CREATE TABLE States (
 CREATE TABLE Users (
     UserID INT PRIMARY KEY AUTO_INCREMENT,
     Username VARCHAR(255),
+    FirstName VARCHAR(25),
+    LastName VARCHAR(50),
+    AccountNonExpired BIT,
+    AccountNonLocked BIT,
+    CredentialsNonExpired BIT,
+    Enabled BIT,
     Email VARCHAR(255),
     Password VARCHAR(255),
     Address VARCHAR(255),
@@ -85,4 +91,17 @@ CREATE TABLE BlogPost (
     AuthorID INT,
     Category VARCHAR(100),
     FOREIGN KEY (AuthorID) REFERENCES  Users(UserID)
+);
+
+CREATE TABLE Authorities (
+    AuthorityID INT PRIMARY KEY AUTO_INCREMENT,
+    Authority VARCHAR(20)
+);
+
+CREATE TABLE UserAuthorities (
+    UserID INT,
+    AuthorityID INT,
+    PRIMARY KEY (UserID,AuthorityID),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (AuthorityID) REFERENCES Authorities(AuthorityID)
 );

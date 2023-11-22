@@ -4,17 +4,17 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table (name = "States")
+@Table(name = "Authorities")
 @Setter
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class States {
+public class Authorities {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "StateID")
-    private int stateID;
-    @Column(name = "Name")
-    private String name;
+    @Column (name = "AuthorityID")
+    private int authorityID;
+    @Column (name = "Authority")
+    private String authority;
 }
