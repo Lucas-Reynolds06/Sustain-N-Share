@@ -6,6 +6,7 @@ import eco.sustainnshare.webapp.repository.StatesRepository;
 import eco.sustainnshare.webapp.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
 @RequiredArgsConstructor
@@ -14,6 +15,7 @@ public class UsersServiceImpl implements UsersService {
     private final UsersRepository userRepository;
     private final StatesRepository statesRepository;
     private final UsersMapper usersMapper;
+    private final BCryptPasswordEncoder passwordEncoder;
 
 
     @Override
@@ -40,7 +42,9 @@ public class UsersServiceImpl implements UsersService {
 
         user = usersMapper.userDtoToEntity(userDto);
         var state = statesRepository.findStateByName(userDto.getState());
+        var hashedPassword = passwordEncoder.encode(userDto.getPassword());
         user.setState(state);
+        user.setPassword(hashedPassword);
         user =  userRepository.save(user);
         return usersMapper.userEntityToDto(user);
     }

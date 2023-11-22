@@ -3,6 +3,7 @@ package eco.sustainnshare.webapp.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -14,7 +15,7 @@ import java.util.List;
 public class UserDto {
     private int userID;
     private String username;
-    private List<AuthorityDto> authorities;
+    private List<AuthorityDto> authorities = new ArrayList<>();
     private Boolean accountNonExpired;
     private Boolean accountNonLocked;
     private Boolean credentialsNonExpired;

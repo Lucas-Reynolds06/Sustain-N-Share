@@ -11,11 +11,16 @@ import org.springframework.security.authentication.event.AuthenticationSuccessEv
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
+
+import java.util.List;
+
+import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 
 @Configuration
 @EnableWebSecurity
@@ -29,29 +34,44 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http.authorizeHttpRequests(authConfig -> {
-            authConfig.requestMatchers(new MvcRequestMatcher(new HandlerMappingIntrospector(), "/"))
-                    .permitAll();
-            authConfig.requestMatchers(new MvcRequestMatcher(new HandlerMappingIntrospector(), "/about-us"))
-                    .permitAll();
-            authConfig.requestMatchers(new MvcRequestMatcher(new HandlerMappingIntrospector(), "/how-it-works"))
-                    .permitAll();
-            authConfig.requestMatchers(new MvcRequestMatcher(new HandlerMappingIntrospector(), "/impact"))
-                    .permitAll();
-            authConfig.requestMatchers(new MvcRequestMatcher(new HandlerMappingIntrospector(), "/blog"))
-                    .permitAll();
-            authConfig.requestMatchers(new MvcRequestMatcher(new HandlerMappingIntrospector(), "/contact-us"))
-                    .permitAll();
-            authConfig.requestMatchers(new MvcRequestMatcher(new HandlerMappingIntrospector(), "/community-stories"))
-                    .permitAll();
-            authConfig.requestMatchers(new MvcRequestMatcher(new HandlerMappingIntrospector(), "/faqs"))
-                    .permitAll();
-            authConfig.requestMatchers(new MvcRequestMatcher(new HandlerMappingIntrospector(), "/sign-up"))
-                    .permitAll();
-
+        var paths = List.of("/",
+                "/about-us",
+                "/how-it-works",
+                "/impact",
+                "/blog",
+                "/contact-us",
+                "/community-stories",
+                "/faqs",
+                "/sign-up",
+                "/log-out",
+                "/sign-in",
+                "/**jpg",
+                "/**JPG",
+                "/**png",
+                "/style.css");
+        http.csrf(csrf->
+            csrf.ignoringRequestMatchers(toH2Console())
+                    .disable()
+        )
+        .authorizeHttpRequests(authConfig -> {
+            paths.forEach(path -> authConfig.requestMatchers(new MvcRequestMatcher(new HandlerMappingIntrospector(), path))
+                            .permitAll());
+            authConfig.requestMatchers(toH2Console()).permitAll();
             authConfig.anyRequest().authenticated();
         })
-                .formLogin(Customizer.withDefaults());
+        .formLogin(login -> {
+            login.loginPage("/sign-in");
+            login.defaultSuccessUrl("/");
+            //ToDo add a login error page
+        }).logout(
+                logout -> {
+                    logout.logoutRequestMatcher(new MvcRequestMatcher(new HandlerMappingIntrospector(), "/log-out"));
+                    logout.logoutSuccessUrl("/");
+                    logout.deleteCookies("JSESSIONID");
+                    logout.invalidateHttpSession(true);
+                }
+        )
+        .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
         return http.build();
     }
 

@@ -71,7 +71,7 @@ Insert into States (Name) values ('Nebraska')
  Insert into Conditions (Name) values ('Used - Damaged')
  Insert into Conditions (Name) values ('Not Applicable')
  --Create default user
- Insert into Users (Username, Email, Password, Address, Phone, City, StateID, ZipCode, Geolocation, FirstName, LastName) values ('Lucas','lucasreynolds@email.com','password1', '123 North Street', '801-555-1234','Salt Lake City', 44, '12345','POINT(40.524 111.8638)','Lucas','Reynolds')
+ Insert into Users (Username, Email, Password, Address, Phone, City, StateID, ZipCode, Geolocation, FirstName, LastName) values ('Lucas','lucasreynolds@email.com','$2a$10$lqLcEaF4/RXvRsmI94rMFeUfzzq0opmveyzsTBf2KNSzWW0adDIIO', '123 North Street', '801-555-1234','Salt Lake City', 44, '12345','POINT(40.524 111.8638)','Lucas','Reynolds')
  --Create default location
  Insert into Locations (Address, City, StateID, ZipCode, Geolocation) values ('123 North Street', 'Salt Lake City', 44, '12345', 'POINT(40.524 111.8638)')
 --Create default item
