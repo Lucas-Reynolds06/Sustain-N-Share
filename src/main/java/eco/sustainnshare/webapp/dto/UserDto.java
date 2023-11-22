@@ -29,4 +29,6 @@ public class UserDto {
     private String state;
     private String zipCode;
     private String password;
+    private String avatarLocation;
+    private String screenName;
 }
