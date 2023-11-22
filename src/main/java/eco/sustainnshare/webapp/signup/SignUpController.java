@@ -1,5 +1,6 @@
 package eco.sustainnshare.webapp.signup;
 
+import eco.sustainnshare.webapp.dto.SignInDto;
 import eco.sustainnshare.webapp.dto.UserDto;
 import eco.sustainnshare.webapp.services.UsersService;
 import lombok.RequiredArgsConstructor;
@@ -25,10 +26,22 @@ public class SignUpController {
         }
     }
 
-    @GetMapping("/sign-in")
-    public String signInOrUp(Model model){
+    @GetMapping("/sign-up")
+    public String signUp(Model model){
         model.addAttribute("user", new UserDto());
-        return "sign-in-or-up";
+        return "sign-up";
+    }
+
+    @GetMapping("/sign-in")
+    public String signIn(Model model) {
+        model.addAttribute("user", new SignInDto());
+        return "sign-in";
+    }
+
+    @PostMapping("/sign-in")
+    public String signIn(Model model, SignInDto userDto) {
+
+        return "";
     }
 
     @GetMapping("/profile")
