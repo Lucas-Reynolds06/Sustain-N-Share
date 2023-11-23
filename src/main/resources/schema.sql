@@ -114,3 +114,12 @@ CREATE TABLE UserAuthorities (
     FOREIGN KEY (UserID) REFERENCES Users(UserID),
     FOREIGN KEY (AuthorityID) REFERENCES Authorities(AuthorityID)
 );
+
+CREATE TABLE Contact (
+    ContactID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(20),
+    LastName VARCHAR(40),
+    Email VARCHAR(50),
+    StateID INT,
+    Subject TEXT
+);
