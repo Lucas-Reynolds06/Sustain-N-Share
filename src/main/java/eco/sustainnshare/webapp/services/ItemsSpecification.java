@@ -41,12 +41,4 @@ public class ItemsSpecification {
             return criteriaBuilder.equal(root.join("condition").get("conditionID"),condition);
         });
     }
-    public static Specification<Items> hasTimeOnSite(Date timeOnSite){
-        return ((root, query, criteriaBuilder) -> {
-            if (timeOnSite == null){
-                return criteriaBuilder.isTrue(criteriaBuilder.literal(true));
-            }
-            return criteriaBuilder.equal(root.get("dateListed"),timeOnSite);
-        });
-    }
 }

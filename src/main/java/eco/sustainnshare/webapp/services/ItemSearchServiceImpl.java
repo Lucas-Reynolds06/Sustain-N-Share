@@ -20,6 +20,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
                 .and(ItemsSpecification.hasCondition(searchItems.getCondition()))
                 .and(ItemsSpecification.hasGeoLocation(null))
                 .and(ItemsSpecification.hasTimeOnSite(searchItems.getTimeOnSite()));
+                .and(ItemsSpecification.hasGeoLocation(null));
         return itemsRepository.findAll(specification);
     }
 }
