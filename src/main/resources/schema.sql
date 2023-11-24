@@ -45,18 +45,6 @@ CREATE TABLE Categories (
     Name VARCHAR(255)
 );
 
--- Create Locations table
-CREATE TABLE Locations (
-    LocationID INT PRIMARY KEY AUTO_INCREMENT,
-    Address VARCHAR(255),
-    City VARCHAR(255),
-    StateID INT,
-    ZipCode VARCHAR(10),
-    GeoLocation GEOMETRY,
-    FOREIGN KEY (StateID) REFERENCES States(StateID)
-
-);
-
 -- Create Items table
 CREATE TABLE Items (
     ItemID INT PRIMARY KEY AUTO_INCREMENT,
