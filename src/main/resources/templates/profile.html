@@ -185,7 +185,7 @@
                                                     <div class="row">
                                                         <div class="col-md-3">
                                                             <input type="hidden" id="selectedImageId" name="avatarId" th:value="${user.avatarId}">
-                                                            <input type="hidden" th:value="${user.userID}">
+                                                            <input type="hidden" th:field="*{userID}">
                                                             <button type="submit" class="btn btn-primary">Update Profile</button>
                                                         </div>
                                                     </div>

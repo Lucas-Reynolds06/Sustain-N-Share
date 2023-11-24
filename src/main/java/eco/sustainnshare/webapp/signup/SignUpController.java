@@ -66,9 +66,9 @@ public class SignUpController {
     }
 
     @PostMapping("/update-profile")
-    public String updateProfile(Model model, UserDto userDto) {
+    public String updateProfile(Model model, UserDto userDto,RedirectAttributes redirectAttributes) {
         UserDto user = userService.updateUser(userDto);
-        model.addAttribute("user", user);
-        return "profile";
+        redirectAttributes.addFlashAttribute("registrationSuccess", "Registration successful. Please sign in.");
+        return "redirect:/profile";
     }
 }
