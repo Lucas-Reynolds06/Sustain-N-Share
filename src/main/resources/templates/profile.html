@@ -49,12 +49,15 @@
             height: 100%;
         }
 
+        .row {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body style="background-color:rgba(248,254,229,255)">
 <div th:insert="fragments/header.html :: header"/>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" style="margin-top: 0px; !important">
             <div class="col-md-1"></div>
             <div class="col-md-7">
                 <div class="row">
@@ -64,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-top: 0px; !important">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-content">
@@ -80,6 +83,21 @@
                                         <strong><span th:text="${user.firstName}">&nbsp;</span>
                                             <span th:text="${user.lastName}"></span>
                                         </strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <span>username : </span><span th:text="${user.username}"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <span>display name: </span><span th:text="${user.screenName}"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div th:text="${user.phone}"></div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -146,6 +164,11 @@
                                                             <label for="firstName">Email</label>
                                                             <input type="text" class="form-control" th:field="*{email}"/>
                                                         </div>
+                                                        <div class="form-label-group col-md-3">
+                                                            <label for="firstName">Phone</label>
+                                                            <input type="text" class="form-control" th:field="*{phone}"/>
+                                                        </div>
+
                                                     </div>
                                                     <div class="row">
                                                         <div class="form-label-group col-md-3">
@@ -184,6 +207,9 @@
 
                                                     <div class="row">
                                                         <div class="col-md-3">
+                                                            <button id="cancelUpdate" type="button" class="btn btn-danger">Cancel Update</button>
+                                                        </div>
+                                                        <div class="col-md-3">
                                                             <input type="hidden" id="selectedImageId" name="avatarId" th:value="${user.avatarId}">
                                                             <input type="hidden" th:field="*{userID}">
                                                             <button type="submit" class="btn btn-primary">Update Profile</button>
@@ -213,7 +239,7 @@
                                             </div>
                                             <div class="col-sm-1"></div>
                                             <div class="col-sm-4">
-                                                10 items donated
+                                                <span th:text="${#lists.size(items)}"></span> items donated
                                             </div>
                                         </div>
                                     </div>
@@ -224,7 +250,7 @@
                                             </div>
                                             <div class="col-sm-1"></div>
                                             <div class="col-sm-4">
-                                                4 items claimed
+                                                <span th:text="${#lists.size(receivedItems)}"></span> items claimed
                                             </div>
                                         </div>
                                     </div>
@@ -291,6 +317,11 @@ profile
         document.getElementById("profileForm").style.display = 'block';
         this.style.display = 'none';
     });
+
+    document.getElementById("cancelUpdate").addEventListener("click", function() {
+        document.getElementById("profileForm").style.display = 'none';
+        document.getElementById("editProfileButton").style.display = 'block';
+    })
 
     document.getElementById("resetPasswordButton").addEventListener("click", function() {
         document.getElementById("resetPasswordButton").addEventListener("click", function() {

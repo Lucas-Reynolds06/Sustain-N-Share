@@ -8,6 +8,8 @@ import eco.sustainnshare.webapp.repository.ConditionsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class ItemsMapper {
@@ -36,5 +38,11 @@ public class ItemsMapper {
                 .location(item.getDonor().getCity())
                 .name(item.getName())
                 .build();
+    }
+
+    public List<ItemDto> itemEntitiesToDtos(List<Items> itemsList) {
+        return itemsList.stream()
+                .map(this::itemEntityToDto)
+                .toList();
     }
 }

@@ -12,6 +12,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ItemsServiceImpl implements ItemsService {
@@ -37,5 +40,19 @@ public class ItemsServiceImpl implements ItemsService {
         createdItem.setGeoLocation(donor.getGeoLocation());
         itemsRepository.save(createdItem);
         return itemsMapper.itemEntityToDto(createdItem);
+    }
+
+    @Override
+    public List<ItemDto> getSharedItemsByUser(int userID) {
+        var user = usersRepository.findById(userID).get();
+        var items = itemsRepository.findAllByDonor(user);
+        return itemsMapper.itemEntitiesToDtos(items);
+    }
+
+    @Override
+    public List<ItemDto> getClaimedItemsByUser(int userID) {
+        var user = usersRepository.findById(userID).get();
+        var items = itemsRepository.findAllByReceiver(user);
+        return itemsMapper.itemEntitiesToDtos(items);
     }
 }

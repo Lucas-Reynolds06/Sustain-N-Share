@@ -1,8 +1,10 @@
 package eco.sustainnshare.webapp.signup;
 
+import eco.sustainnshare.webapp.dto.ItemDto;
 import eco.sustainnshare.webapp.dto.SignInDto;
 import eco.sustainnshare.webapp.dto.UserDto;
 import eco.sustainnshare.webapp.services.AvatarService;
+import eco.sustainnshare.webapp.services.ItemsService;
 import eco.sustainnshare.webapp.services.StateService;
 import eco.sustainnshare.webapp.services.UsersService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class SignUpController {
@@ -21,6 +25,7 @@ public class SignUpController {
     private final UsersService userService;
     private final StateService stateService;
     private final AvatarService avatarService;
+    private final ItemsService itemsService;
 
     @PostMapping("/sign-up")
     public String signUp(Model model, UserDto userDto, RedirectAttributes redirectAttributes) {
@@ -59,9 +64,13 @@ public class SignUpController {
         var user = userService.getUserByUsername(userDetails.getUsername());
         var avatars = avatarService.getAvatars();
         var states = stateService.getStates();
+        var items = itemsService.getSharedItemsByUser(user.getUserID());
+        var claimed = itemsService.getClaimedItemsByUser(user.getUserID());
         model.addAttribute("user", user);
         model.addAttribute("avatars", avatars);
         model.addAttribute("states", states);
+        model.addAttribute("items", items);
+        model.addAttribute("receivedItems", claimed);
         return "profile";
     }
 
