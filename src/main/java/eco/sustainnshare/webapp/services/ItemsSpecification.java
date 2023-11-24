@@ -1,7 +1,7 @@
 package eco.sustainnshare.webapp.services;
 
 import eco.sustainnshare.webapp.entity.Items;
-import eco.sustainnshare.webapp.entity.Locations;
+import org.locationtech.jts.geom.Point;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Date;
@@ -25,12 +25,12 @@ public class ItemsSpecification {
             return criteriaBuilder.equal(root.join("category").get("categoryID"),category);
         });
     }
-    public static Specification<Items> hasLocation(Locations location){
+    public static Specification<Items> hasGeoLocation(Point location){
         return ((root, query, criteriaBuilder) -> {
             if (location == null){
                 return criteriaBuilder.isTrue(criteriaBuilder.literal(true));
             }
-            return criteriaBuilder.equal(root.get("location"),location);
+            return criteriaBuilder.equal(root.get("geoLocation"),location);
         });
     }
     public static Specification<Items> hasCondition(Integer condition){
