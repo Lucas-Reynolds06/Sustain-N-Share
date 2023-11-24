@@ -25,8 +25,15 @@ public class UsersMapper {
                 .enabled(user.getEnabled())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
+                .address(user.getAddress())
+                .city(user.getCity())
+                .zipCode(user.getZipCode())
+                .phone(user.getPhone())
+                .screenName(user.getScreenName())
                 .email(user.getEmail())
                 .state(user.getState().getName())
+                .avatarLocation(user.getAvatar().getLocation())
+                .avatarId(user.getAvatar().getAvatarId())
                 .build();
     }
 
@@ -49,6 +56,10 @@ public class UsersMapper {
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .email(user.getEmail())
+                .address(user.getAddress())
+                .city(user.getCity())
+                .zipCode(user.getZipCode())
+                .phone(user.getPhone())
                 .build();
     }
 

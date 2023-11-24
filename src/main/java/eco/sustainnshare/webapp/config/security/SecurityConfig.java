@@ -61,7 +61,7 @@ public class SecurityConfig {
         })
         .formLogin(login -> {
             login.loginPage("/sign-in");
-            login.defaultSuccessUrl("/");
+            login.defaultSuccessUrl("/profile");
             //ToDo add a login error page
         }).logout(
                 logout -> {

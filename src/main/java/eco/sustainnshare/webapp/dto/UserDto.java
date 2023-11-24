@@ -31,4 +31,5 @@ public class UserDto {
     private String password;
     private String avatarLocation;
     private String screenName;
+    private int avatarId;
 }
