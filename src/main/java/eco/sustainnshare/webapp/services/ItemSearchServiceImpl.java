@@ -4,7 +4,6 @@ import eco.sustainnshare.webapp.dto.SearchItemDto;
 import eco.sustainnshare.webapp.entity.Items;
 import eco.sustainnshare.webapp.repository.ItemsRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,7 @@ public class ItemSearchServiceImpl implements ItemSearchService {
                 .where(ItemsSpecification.hasSearchText(searchItems.getSearchText()))
                 .and(ItemsSpecification.hasCategory(searchItems.getCategory()))
                 .and(ItemsSpecification.hasCondition(searchItems.getCondition()))
-                .and(ItemsSpecification.hasLocation(null))
+                .and(ItemsSpecification.hasGeoLocation(null))
                 .and(ItemsSpecification.hasTimeOnSite(searchItems.getTimeOnSite()));
         return itemsRepository.findAll(specification);
     }

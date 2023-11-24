@@ -26,6 +26,7 @@ public class ItemsMapper {
     }
     public ItemDto itemEntityToDto(Items item){
         return ItemDto.builder()
+                .itemID(item.getItemID())
                 .itemImage(item.getItemImage())
                 .donor(item.getDonor().getScreenName())
                 .category(item.getCategory().getCategoryID())
