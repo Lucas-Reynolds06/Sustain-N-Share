@@ -17,7 +17,5 @@ public class SearchItemDto {
     private String state;
     private String zipCode;
     private Integer condition;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date timeOnSite;
     private Integer radius;
 }

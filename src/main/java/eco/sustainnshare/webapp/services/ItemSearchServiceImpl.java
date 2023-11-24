@@ -19,8 +19,12 @@ public class ItemSearchServiceImpl implements ItemSearchService {
                 .where(ItemsSpecification.hasSearchText(searchItems.getSearchText()))
                 .and(ItemsSpecification.hasCategory(searchItems.getCategory()))
                 .and(ItemsSpecification.hasCondition(searchItems.getCondition()))
+<<<<<<< Updated upstream
                 .and(ItemsSpecification.hasLocation(null))
                 .and(ItemsSpecification.hasTimeOnSite(searchItems.getTimeOnSite()));
+=======
+                .and(ItemsSpecification.hasGeoLocation(null));
+>>>>>>> Stashed changes
         return itemsRepository.findAll(specification);
     }
 }
