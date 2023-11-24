@@ -66,11 +66,13 @@ public class SignUpController {
         var states = stateService.getStates();
         var items = itemsService.getSharedItemsByUser(user.getUserID());
         var claimed = itemsService.getClaimedItemsByUser(user.getUserID());
+        var impactPoints = itemsService.calculateImpactPoints(user.getUserID());
         model.addAttribute("user", user);
         model.addAttribute("avatars", avatars);
         model.addAttribute("states", states);
         model.addAttribute("items", items);
         model.addAttribute("receivedItems", claimed);
+        model.addAttribute("impactPoints",impactPoints);
         return "profile";
     }
 

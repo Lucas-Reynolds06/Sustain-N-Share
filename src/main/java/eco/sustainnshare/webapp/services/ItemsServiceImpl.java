@@ -5,6 +5,7 @@ import eco.sustainnshare.webapp.dto.ItemDto;
 import eco.sustainnshare.webapp.entity.Items;
 import eco.sustainnshare.webapp.entity.Users;
 import eco.sustainnshare.webapp.mappers.ItemsMapper;
+import eco.sustainnshare.webapp.repository.CategoriesRepository;
 import eco.sustainnshare.webapp.repository.ItemsRepository;
 import eco.sustainnshare.webapp.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
@@ -54,5 +55,20 @@ public class ItemsServiceImpl implements ItemsService {
         var user = usersRepository.findById(userID).get();
         var items = itemsRepository.findAllByReceiver(user);
         return itemsMapper.itemEntitiesToDtos(items);
+    }
+
+    @Override
+    public int calculateImpactPoints(int userID){
+        int total = 0;
+        var user = usersRepository.findById(userID).get();
+        var sharedItems = itemsRepository.findAllByDonor(user);
+        for(var item : sharedItems){
+            total += ImpactPoints.getPointsByCategory(item.getCategory().getName());
+        }
+        var receivedItems = itemsRepository.findAllByReceiver(user);
+        for (var item : receivedItems){
+            total += ImpactPoints.getPointsByCategory(item.getCategory().getName());
+        }
+        return total;
     }
 }
