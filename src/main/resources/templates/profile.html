@@ -57,10 +57,10 @@
 <body style="background-color:rgba(248,254,229,255)">
 <div th:insert="fragments/header.html :: header"/>
     <div class="container-fluid">
-        <div class="row" style="margin-top: 0px; !important">
+        <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-7">
-                <div class="row">
+                <div class="row"  style="margin-top: 0px; !important">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="profile-top" style="background-image: url('earth.jpg');"></div>
@@ -289,7 +289,25 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div style="padding:20px">
-                                    <h2>My Items</h2>
+                                    <h2>My Donated Items</h2>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <strong>Item</strong>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <strong>Donated Date</strong>
+                                        </div>
+                                    </div>
+                                    <div th:each="item : ${items}">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <span th:text="${item.name}"/>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <span th:text="${#dates.format(item.dateListed, 'MM/dd/yyyy')}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
