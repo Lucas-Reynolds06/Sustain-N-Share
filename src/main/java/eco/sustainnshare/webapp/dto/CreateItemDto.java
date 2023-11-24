@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
@@ -17,6 +16,6 @@ public class CreateItemDto {
     private Integer category;
     private Integer condition;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date timeOnSite;
-    private MultipartFile itemImage;
+    private Date dateListed;
+    private String itemImage;
 }
