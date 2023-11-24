@@ -68,11 +68,11 @@ CREATE TABLE Items (
     ReceiverID INT NULL,
     DateListed DATE,
     DateClaimed DATE NULL,
-    LocationID INT,
+    GeoLocation GEOMETRY,
+    ItemImage VARCHAR(255),
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID),
     FOREIGN KEY (DonorID) REFERENCES Users(UserID),
     FOREIGN KEY (ReceiverID) REFERENCES Users(UserID),
-    FOREIGN KEY (LocationID) REFERENCES Locations(LocationID),
     FOREIGN Key (ConditionID) REFERENCES Conditions(ConditionID)
 );
 

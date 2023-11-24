@@ -1,10 +1,8 @@
 package eco.sustainnshare.webapp.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.locationtech.jts.geom.Point;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -15,6 +13,7 @@ import java.util.Date;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Items {
     @Id
     @Column (name = "ItemID")
@@ -42,7 +41,8 @@ public class Items {
     @Column (name = "DateClaimed")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateClaimed;
-    @ManyToOne
-    @JoinColumn(name = "LocationID")
-    private Locations location;
+    @Column(name = "GeoLocation")
+    private Point geoLocation;
+    @Column(name = "ItemImage")
+    private String itemImage;
 }
