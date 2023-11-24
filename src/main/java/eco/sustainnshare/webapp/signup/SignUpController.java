@@ -2,24 +2,32 @@ package eco.sustainnshare.webapp.signup;
 
 import eco.sustainnshare.webapp.dto.SignInDto;
 import eco.sustainnshare.webapp.dto.UserDto;
+import eco.sustainnshare.webapp.services.AvatarService;
+import eco.sustainnshare.webapp.services.StateService;
 import eco.sustainnshare.webapp.services.UsersService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
 public class SignUpController {
 
     private final UsersService userService;
+    private final StateService stateService;
+    private final AvatarService avatarService;
 
     @PostMapping("/sign-up")
-    public String signUp(Model model, UserDto userDto) {
+    public String signUp(Model model, UserDto userDto, RedirectAttributes redirectAttributes) {
         try {
             var user = userService.createUser(userDto);
-            return "signup-success";
+            redirectAttributes.addFlashAttribute("registrationSuccess", "Registration successful. Please sign in.");
+            return "redirect:/sign-in";
         } catch(RuntimeException e) {
             model.addAttribute("error", e.getMessage());
             return "signup-failure";
@@ -28,7 +36,9 @@ public class SignUpController {
 
     @GetMapping("/sign-up")
     public String signUp(Model model){
+        var states = stateService.getStates();
         model.addAttribute("user", new UserDto());
+        model.addAttribute("states", states);
         return "sign-up";
     }
 
@@ -45,8 +55,19 @@ public class SignUpController {
     }
 
     @GetMapping("/profile")
-    public String profile(Model model) {
-        var user = userService.getUserByID(1);
+    public String profile(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        var user = userService.getUserByUsername(userDetails.getUsername());
+        var avatars = avatarService.getAvatars();
+        var states = stateService.getStates();
+        model.addAttribute("user", user);
+        model.addAttribute("avatars", avatars);
+        model.addAttribute("states", states);
+        return "profile";
+    }
+
+    @PostMapping("/update-profile")
+    public String updateProfile(Model model, UserDto userDto) {
+        UserDto user = userService.updateUser(userDto);
         model.addAttribute("user", user);
         return "profile";
     }

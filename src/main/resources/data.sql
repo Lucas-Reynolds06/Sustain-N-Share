@@ -102,6 +102,7 @@ Insert into States (Name) values ('Nebraska')
  Insert into Avatar (Location) values('young_woman_8.png')
  Insert into Avatar (Location) values('young_woman_9.png')
  Insert into Avatar (Location) values('young_woman_10.png')
+ Insert into Avatar (Location) values('default.png')
 
  --Create default user
  Insert into Users (Username, Email, Password, Address, Phone, City, StateID, ZipCode, Geolocation, FirstName, LastName, AvatarID) values ('Lucas','lucasreynolds@email.com','$2a$10$lqLcEaF4/RXvRsmI94rMFeUfzzq0opmveyzsTBf2KNSzWW0adDIIO', '123 North Street', '801-555-1234','Salt Lake City', 44, '12345','POINT(40.524 111.8638)','Lucas','Reynolds', 10)

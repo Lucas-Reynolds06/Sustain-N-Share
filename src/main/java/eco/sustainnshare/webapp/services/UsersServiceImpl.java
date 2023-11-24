@@ -2,9 +2,11 @@ package eco.sustainnshare.webapp.services;
 
 import eco.sustainnshare.webapp.dto.UserDto;
 import eco.sustainnshare.webapp.mappers.UsersMapper;
+import eco.sustainnshare.webapp.repository.AvatarRepository;
 import eco.sustainnshare.webapp.repository.StatesRepository;
 import eco.sustainnshare.webapp.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -16,6 +18,7 @@ public class UsersServiceImpl implements UsersService {
     private final StatesRepository statesRepository;
     private final UsersMapper usersMapper;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final AvatarRepository avatarRepository;
 
 
     @Override
@@ -45,7 +48,24 @@ public class UsersServiceImpl implements UsersService {
         var hashedPassword = passwordEncoder.encode(userDto.getPassword());
         user.setState(state);
         user.setPassword(hashedPassword);
+        var avatar = avatarRepository.findAvatarByLocation("default.png");
+        user.setAvatar(avatar);
         user =  userRepository.save(user);
         return usersMapper.userEntityToDto(user);
+    }
+
+    @Override
+    public UserDto getUserByUsername(String username) {
+        var user = userRepository.findUsersByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("user not found");
+        }
+        return usersMapper.userEntityToDto(user);
+    }
+
+    @Override
+    public UserDto updateUser(UserDto userDto) {
+
+        return null;
     }
 }
