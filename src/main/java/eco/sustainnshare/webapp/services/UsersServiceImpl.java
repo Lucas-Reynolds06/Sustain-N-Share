@@ -65,7 +65,20 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public UserDto updateUser(UserDto userDto) {
-
-        return null;
+        var user = userRepository.findById(userDto.getUserID()).get();
+        var mappedUser = usersMapper.userDtoToEntity(userDto);
+        mappedUser.setUserID(user.getUserID());
+        //did they change their password?
+        if(userDto.getPassword().isEmpty()) {
+            mappedUser.setPassword(user.getPassword());
+        } else {
+            var hashedPassword = passwordEncoder.encode(userDto.getPassword());
+            mappedUser.setPassword(hashedPassword);
+        }
+        var avatar = avatarRepository.findById(userDto.getAvatarId()).get();
+        var state = statesRepository.findStateByName(userDto.getState());
+        mappedUser.setState(state);
+        mappedUser.setAvatar(avatar);
+        return usersMapper.userEntityToDto(userRepository.save(mappedUser));
     }
 }

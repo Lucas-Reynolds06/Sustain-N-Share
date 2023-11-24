@@ -60,6 +60,7 @@ public class UsersMapper {
                 .city(user.getCity())
                 .zipCode(user.getZipCode())
                 .phone(user.getPhone())
+                .screenName(user.getScreenName())
                 .build();
     }
 
