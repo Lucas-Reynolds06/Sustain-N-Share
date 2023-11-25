@@ -9,54 +9,58 @@
 </head>
 <body style="background-color:rgba(248,254,229,255)">
 <div th:insert="fragments/header.html :: header"/>
-<form action="#" th:action="@{/create-item}" method="post" enctype="multipart/form-data">
-  <div class="row" style="padding-top: 50px;">
-    <div class="col-1"></div>
-    <div>
-      <input class="col-10" type="file" name="itemImage" placeholder="Item Image" accept="image/png, image/jpeg">
-    </div>
+<div class="container">
+  <div class="clearfix">
+    <form action="#" th:action="@{/create-item}" method="post" enctype="multipart/form-data">
+      <div class="row" style="padding-top: 50px;">
+        <div class="col-md-10"></div>
+        <div>
+          <input class="col-md-10" type="file" name="itemImage" placeholder="Item Image" accept="image/png, image/jpeg">
+        </div>
+      </div>
+      <div class = "row" style="padding-top: 50px;">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <input type="text" class="form-control" placeholder="Item Name" name="itemName"/>
+        </div>
+      </div>
+      <div class = "row" style="padding-top: 50px;">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <input type="text" class="form-control" placeholder="Description" name="description"/>
+        </div>
+      </div>
+      <div class="row" style="padding-top: 50px;">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <select class="form-select" aria-label="Category" name="category">
+            <option th:value="0" selected>Category</option>
+            <option th:each="category : ${categories}"
+                    th:value="${category.categoryID}"
+                    th:text="${category.name}">Category</option>
+          </select>
+        </div>
+      </div>
+      <div class="row" style="padding-top: 50px;">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <select class="form-select" aria-label="Condition" name="condition">
+            <option th:value="0" selected>Condition</option>
+            <option th:each="condition : ${conditions}"
+                    th:value="${condition.id}"
+                    th:text="${condition.name}">Condition</option>
+          </select>
+        </div>
+      </div>
+      <div class="row" style="padding-top: 50px;">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </form>
   </div>
-  <div class = "row" style="padding-top: 50px;">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <input type="text" class="form-control" placeholder="Item Name" name="itemName"/>
-    </div>
-  </div>
-  <div class = "row" style="padding-top: 50px;">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <input type="text" class="form-control" placeholder="Description" name="description"/>
-    </div>
-  </div>
-  <div class="row" style="padding-top: 50px;">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <select class="form-select" aria-label="Category" name="category">
-        <option th:value="0" selected>Category</option>
-        <option th:each="category : ${categories}"
-                th:value="${category.categoryID}"
-                th:text="${category.name}">Category</option>
-      </select>
-    </div>
-  </div>
-  <div class="row" style="padding-top: 50px;">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <select class="form-select" aria-label="Condition" name="condition">
-        <option th:value="0" selected>Condition</option>
-        <option th:each="condition : ${conditions}"
-                th:value="${condition.id}"
-                th:text="${condition.name}">Condition</option>
-      </select>
-    </div>
-  </div>
-  <div class="row" style="padding-top: 50px;">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <button type="submit" class="btn btn-primary">Create</button>
-    </div>
-  </div>
-</form>
+</div>
 <div th:insert="fragments/footer.html :: footer"/>
 </body>
 </body>
