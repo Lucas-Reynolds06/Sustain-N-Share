@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,7 +62,7 @@
         <p th:utext="${blogPost.content}"></p>
     </div>
     <div class="row">
-        <div class="col-lg-10">
+        <div class="col-lg-10" style="padding-top:20px; padding-bottom: 20px; margin-left:10px;">
             <div>
                 <h2>
                     Comments
@@ -93,9 +93,39 @@
                     </div>
                 </div>
             </div>
+
+            <div th:if="${!isAuthenticated}" style="margin-top:20px;">
+                <h4>You must be logged in to comment</h4>
+            </div>
+            <div th:if="${isAuthenticated}" style="margin-top:20px;">
+                <button type="button" class="btn btn-primary" id="addComment">Add Comment</button>
+                <div class="card" id="commentForm" style="display:none;">
+                    <form action="#" th:action="@{/post-comment}"  th:object="${postComment}" method="post">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label for="comment">Your Comment</label>
+                                <textarea id="comment" name="subject" class="form-control" placeholder="Write something..." style="height:200px;" th:field="*{comment}"></textarea>
+                                <br>
+                                <br>
+                                <input type="hidden" th:value="${blogPost.blogPostId}" name="postId">
+                                <button class="btn btn-primary btn-block text-uppercase mb-2" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>
+<script>
+    document.getElementById("addComment").addEventListener("click", function() {
+        document.getElementById("commentForm").style.display = 'block';
+        this.style.display = 'none';
+    });
+
+</script>
 <div th:insert="fragments/footer.html :: footer"/>
 </body>
 </html>
