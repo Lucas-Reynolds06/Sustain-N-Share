@@ -30,7 +30,12 @@
   <div class="row" style="padding-top: 50px;">
     <div class="col-2"></div>
     <div class="col-2">
-      <input type="text" class="form-control" placeholder="State" th:field="*{state}"/>
+      <select class="form-select" aria-label="State" th:field="*{state}">
+        <option th:value="0" selected>State</option>
+        <option th:each="state : ${states}"
+                th:value="${state.stateID}"
+                th:text="${state.name}">State</option>
+      </select>
     </div>
     <div class="col-2">
       <input type="text" class="form-control" placeholder="City" th:field="*{city}"/>
