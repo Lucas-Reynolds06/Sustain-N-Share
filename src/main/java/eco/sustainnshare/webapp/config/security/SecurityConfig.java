@@ -49,7 +49,9 @@ public class SecurityConfig {
                 "/**jpg",
                 "/**JPG",
                 "/**png",
-                "/style.css");
+                "/style.css",
+                "/sharing-page",
+                "/search-items");
         http.csrf(csrf->
             csrf.ignoringRequestMatchers(toH2Console())
                     .disable()
