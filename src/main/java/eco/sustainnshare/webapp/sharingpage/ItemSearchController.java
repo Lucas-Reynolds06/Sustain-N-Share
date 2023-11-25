@@ -2,6 +2,7 @@ package eco.sustainnshare.webapp.sharingpage;
 
 import eco.sustainnshare.webapp.dto.CategoryDto;
 import eco.sustainnshare.webapp.dto.ConditionDto;
+import eco.sustainnshare.webapp.dto.ItemDto;
 import eco.sustainnshare.webapp.dto.SearchItemDto;
 import eco.sustainnshare.webapp.entity.Categories;
 import eco.sustainnshare.webapp.entity.Conditions;
@@ -52,7 +53,7 @@ public class ItemSearchController {
 
     @PostMapping ("/search-items")
     public String searchItems(Model model, SearchItemDto searchItems){
-        List<Items> items = itemSearchService.searchItems(searchItems);
+        List<ItemDto> items = itemSearchService.searchItems(searchItems);
         model.addAttribute("items",items);
         return "items";
     }

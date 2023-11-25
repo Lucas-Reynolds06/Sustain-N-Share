@@ -1,6 +1,7 @@
 package eco.sustainnshare.webapp.mappers;
 
 import eco.sustainnshare.webapp.dto.CreateItemDto;
+import eco.sustainnshare.webapp.dto.DonorDto;
 import eco.sustainnshare.webapp.dto.ItemDto;
 import eco.sustainnshare.webapp.entity.Items;
 import eco.sustainnshare.webapp.repository.CategoriesRepository;
@@ -27,10 +28,15 @@ public class ItemsMapper {
                 .build();
     }
     public ItemDto itemEntityToDto(Items item){
+        var donor = DonorDto.builder()
+                .donorID(item.getDonor().getUserID())
+                .screenName(item.getDonor().getScreenName())
+                .avatarLocation(item.getDonor().getAvatar().getLocation())
+                .build();
         return ItemDto.builder()
                 .itemID(item.getItemID())
                 .itemImage(item.getItemImage())
-                .donor(item.getDonor().getScreenName())
+                .donor(donor)
                 .category(item.getCategory().getCategoryID())
                 .condition(item.getCondition().getConditionID())
                 .dateListed(item.getDateListed())
