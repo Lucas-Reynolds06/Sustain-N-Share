@@ -1,6 +1,7 @@
 package eco.sustainnshare.webapp.services;
 
-import eco.sustainnshare.webapp.entity.BlogPost;
+import eco.sustainnshare.webapp.dto.BlogPostDto;
+import eco.sustainnshare.webapp.mappers.BlogMapper;
 import eco.sustainnshare.webapp.repository.BlogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,14 +13,15 @@ import java.util.List;
 public class BlogPostServiceImpl implements BlogPostService {
 
     private final BlogRepository repository;
+    private final BlogMapper mapper;
 
     @Override
-    public List<BlogPost> getPosts() {
-        return repository.findAll();
+    public List<BlogPostDto> getPosts() {
+        return mapper.blogPostsToDtos(repository.findAll());
     }
 
     @Override
-    public BlogPost getBlogPostById(Integer id) {
-        return repository.findById(id).get();
+    public BlogPostDto getBlogPostById(Integer id) {
+        return mapper.blogPostToDto(repository.findById(id).get());
     }
 }

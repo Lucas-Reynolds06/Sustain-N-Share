@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "BlogPost")
 @Setter
@@ -28,4 +30,6 @@ public class BlogPost {
     @ManyToOne
     @JoinColumn(name = "AuthorID")
     private Users author;
+    @OneToMany(mappedBy = "blogPost", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<BlogComment> comments;
 }

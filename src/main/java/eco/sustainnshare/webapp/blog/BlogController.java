@@ -1,6 +1,5 @@
 package eco.sustainnshare.webapp.blog;
 
-import eco.sustainnshare.webapp.entity.BlogPost;
 import eco.sustainnshare.webapp.services.BlogPostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -22,8 +21,8 @@ public class BlogController {
 
     @GetMapping("/blog/{id}")
     public String getPost(@PathVariable("id") Integer id, Model model) {
-        BlogPost post = service.getBlogPostById(id);
+        var post = service.getBlogPostById(id);
         model.addAttribute("blogPost", post);
-        return "blogPost";
+        return "blog-post";
     }
 }
