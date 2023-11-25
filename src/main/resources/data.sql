@@ -103,9 +103,10 @@ Insert into States (Name) values ('Nebraska')
  Insert into Avatar (Location) values('young_woman_9.png')
  Insert into Avatar (Location) values('young_woman_10.png')
  Insert into Avatar (Location) values('default.png')
-
- --Create default user
- Insert into Users (Username, ScreenName, Email, Password, Address, Phone, City, StateID, ZipCode, Geolocation, FirstName, LastName, AvatarID) values ('Lucas', 'donator boi', 'lucasreynolds@email.com','$2a$10$lqLcEaF4/RXvRsmI94rMFeUfzzq0opmveyzsTBf2KNSzWW0adDIIO', '123 North Street', '801-555-1234','Salt Lake City', 44, '12345','POINT(40.524 111.8638)','Lucas','Reynolds', 10)
+ --Create default users
+ Insert into Users (Username, ScreenName, Email, Password, Address, Phone, City, StateID, ZipCode, Geolocation, FirstName, LastName, AvatarID) values ('Lucas','GiverOfThings','lucasreynolds@email.com','$2a$10$pdPdUQDCS/sbeDP59nCqiODpTZn1i5WzWFj579ayq7B1PFxw8Co/2', '123 North Street', '801-555-1234','Salt Lake City', 44, '12345','POINT(40.524 111.8638)','Lucas','Reynolds', 14)
+ Insert into Users (Username, ScreenName, Email, Password, Address, Phone, City, StateID, ZipCode, Geolocation, FirstName, LastName, AvatarID) values ('Emily','DonorOfStuff','emilyreynolds@email.com','$2a$10$pdPdUQDCS/sbeDP59nCqiODpTZn1i5WzWFj579ayq7B1PFxw8Co/2', '456 South Street', '385-555-4321','Salt Lake City', 44, '12345','POINT(40.524 111.8638)','Emily','Reynolds', 24)
+ Insert into Users (Username, ScreenName, Email, Password, Address, Phone, City, StateID, ZipCode, Geolocation, FirstName, LastName, AvatarID) values ('Adison','GranterOfGifts','adisongordon@email.com','$2a$10$pdPdUQDCS/sbeDP59nCqiODpTZn1i5WzWFj579ayq7B1PFxw8Co/2', '789 West Street', '435-555-0000','Salt Lake City',44, '12345','POINT(40.524 111.8638)','Adison','Gordon', 9)
  --Create default item
  Insert into Items (Name, Description, CategoryID, ConditionID, DonorID, DateListed, Geolocation, ItemImage) values ('Nintendo Switch','Comes with some games such as Mario Cart 8 Deluxe', 2, 2, 1,'2023-11-16','POINT(40.524 111.8638)', 'switch.jpeg')
 -- make some blog posts
