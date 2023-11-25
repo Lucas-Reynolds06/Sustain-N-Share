@@ -10,8 +10,15 @@
 </head>
 <body style="background-color:rgba(248,254,229,255)">
 <div th:insert="fragments/header.html :: header"/>
-<div th:each="items: ${items}">
-    <div th:text="${items.name}"></div>
+<div th:each="item : ${items}">
+    <div class="row">
+        <div class="col-md-4">
+            <h1 th:text="${item.name}"/>
+        </div>
+        <div class="col-md-4">
+            <img th:src="@{'~/item-images/' + ${item.itemID} + '/' + ${item.itemImage}}">
+        </div>
+    </div>
 </div>
 <div th:insert="fragments/footer.html :: footer"/>
 </body>
