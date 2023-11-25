@@ -52,17 +52,6 @@
   <div class="row" style="padding-top: 50px;">
     <div class="col-1"></div>
     <div class="col-10">
-      <select class="form-select" aria-label="Condition" th:field="*{condition}">
-        <option th:value="0" selected>Condition</option>
-        <option th:each="condition : ${conditions}"
-                th:value="${condition.id}"
-                th:text="${condition.name}">Condition</option>
-      </select>
-    </div>
-  </div>
-  <div class="row" style="padding-top: 50px;">
-    <div class="col-1"></div>
-    <div class="col-10">
       <button type="submit" class="btn btn-primary">Search</button>
     </div>
   </div>

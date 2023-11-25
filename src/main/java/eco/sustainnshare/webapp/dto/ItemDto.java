@@ -18,7 +18,7 @@ public class ItemDto {
     private String description;
     private Integer category;
     private Integer condition;
-    private String donor;
+    private DonorDto donor;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateListed;
     private String location;
