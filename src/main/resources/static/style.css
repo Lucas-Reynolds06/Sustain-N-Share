@@ -192,3 +192,9 @@ header, footer {
     margin-top: 5%;
     margin-bottom: 5%;
 }
+
+.div1 {
+    width: 300px;
+    height: 100px;
+    background-color: #74a984;
+}

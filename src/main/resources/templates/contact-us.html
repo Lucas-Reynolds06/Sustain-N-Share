@@ -25,15 +25,12 @@
 </head>
 <body style="background-color:rgba(248,254,229,255)">
 <div th:insert="fragments/header.html :: header"/>
-<h1>Contact Us</h1>
-<p>Email us at <strong>sustainnshare@gmail.com</strong></p>
-<p>Call us at <strong>555-1234</strong></p>
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-xl-7 mx-auto">
         <div class="card rounded-lg shadow border-0 card-container">
           <div class="card-body p-4 p-lg-5 text-black">
-            <h3 class="mb-4">Contact Us Below</h3>
+            <h3 class="mb-4">Have a question that's not in our FAQ? Contact Us Below!</h3>
             <!-- Form -->
             <form th:action="@{/contact-us}" th:object="${contact}" method="post">
               <div class="form-label-group">
@@ -57,6 +54,8 @@
               <br>
               <br>
               <button class="btn btn-primary btn-block text-uppercase mb-2" type="submit">Submit</button>
+              <p>Email us at <strong>sustainnshare@gmail.com</strong></p>
+              <p>Call us at <strong>555-1234</strong></p>
             </form>
             <!-- End Form -->
           </div>
