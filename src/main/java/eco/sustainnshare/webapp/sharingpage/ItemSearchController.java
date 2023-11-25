@@ -1,15 +1,13 @@
 package eco.sustainnshare.webapp.sharingpage;
 
-import eco.sustainnshare.webapp.dto.CategoryDto;
-import eco.sustainnshare.webapp.dto.ConditionDto;
-import eco.sustainnshare.webapp.dto.ItemDto;
-import eco.sustainnshare.webapp.dto.SearchItemDto;
+import eco.sustainnshare.webapp.dto.*;
 import eco.sustainnshare.webapp.entity.Categories;
 import eco.sustainnshare.webapp.entity.Conditions;
 import eco.sustainnshare.webapp.entity.Items;
 import eco.sustainnshare.webapp.services.CategoriesService;
 import eco.sustainnshare.webapp.services.ConditionsService;
 import eco.sustainnshare.webapp.services.ItemSearchService;
+import eco.sustainnshare.webapp.services.StateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +23,7 @@ public class ItemSearchController {
     private final ItemSearchService itemSearchService;
     private final CategoriesService categoriesService;
     private final ConditionsService conditionsService;
+    private final StateService stateService;
 
     @GetMapping("/search-items")
     public String searchItems(Model model) {
@@ -45,9 +44,11 @@ public class ItemSearchController {
                             .name(condition.getName())
                     .build());
         }
+        List<StateDto> stateDtos = stateService.getStates();
         model.addAttribute("items",searchItems);
         model.addAttribute("categories",categoryDtos);
         model.addAttribute("conditions",conditionDtos);
+        model.addAttribute("states",stateDtos);
         return "search-form";
     }
 
