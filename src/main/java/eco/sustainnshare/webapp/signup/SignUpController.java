@@ -1,6 +1,5 @@
 package eco.sustainnshare.webapp.signup;
 
-import eco.sustainnshare.webapp.dto.ItemDto;
 import eco.sustainnshare.webapp.dto.SignInDto;
 import eco.sustainnshare.webapp.dto.UserDto;
 import eco.sustainnshare.webapp.services.AvatarService;
@@ -15,8 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
