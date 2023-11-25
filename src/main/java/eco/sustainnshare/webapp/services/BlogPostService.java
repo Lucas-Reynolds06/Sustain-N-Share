@@ -1,11 +1,11 @@
 package eco.sustainnshare.webapp.services;
 
-import eco.sustainnshare.webapp.entity.BlogPost;
+import eco.sustainnshare.webapp.dto.BlogPostDto;
 
 import java.util.List;
 
 public interface BlogPostService {
-    List<BlogPost> getPosts();
+    List<BlogPostDto> getPosts();
 
-    BlogPost getBlogPostById(Integer id);
+    BlogPostDto getBlogPostById(Integer id);
 }

@@ -111,3 +111,13 @@ CREATE TABLE Contact (
     StateID INT,
     Subject TEXT
 );
+
+CREATE TABLE BlogComments(
+    BlogCommentID INT PRIMARY KEY AUTO_INCREMENT,
+    BlogPostID INT,
+    CommenterID INT,
+    Comment TEXT,
+    DatePosted DATE,
+    FOREIGN KEY (CommenterID) REFERENCES Users(UserID),
+    FOREIGN KEY (BlogPostID) REFERENCES BlogPost(BlogPostID)
+);
