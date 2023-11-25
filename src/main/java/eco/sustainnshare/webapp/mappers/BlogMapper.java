@@ -1,6 +1,7 @@
 package eco.sustainnshare.webapp.mappers;
 
 import eco.sustainnshare.webapp.dto.BlogCommentDto;
+import eco.sustainnshare.webapp.dto.BlogPostCommentDto;
 import eco.sustainnshare.webapp.dto.BlogPostDto;
 import eco.sustainnshare.webapp.entity.BlogComment;
 import eco.sustainnshare.webapp.entity.BlogPost;
@@ -47,5 +48,12 @@ public class BlogMapper {
             ;
         });
         return commentList;
+    }
+
+    public BlogComment commentDtoToBlogComment(BlogPostCommentDto postComment) {
+        return BlogComment.builder()
+                .comment(postComment.getComment())
+                .build();
+
     }
 }

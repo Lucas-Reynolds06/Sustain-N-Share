@@ -49,6 +49,9 @@ public class SecurityConfig {
                 "/**jpg",
                 "/**JPG",
                 "/**png",
+                "/style.css",
+                "/sharing-page",
+                "/search-items",
                 "/avitars/**",
                 "/style.css");
         http.csrf(csrf->
