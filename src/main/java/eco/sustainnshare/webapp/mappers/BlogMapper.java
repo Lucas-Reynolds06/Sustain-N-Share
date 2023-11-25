@@ -21,9 +21,12 @@ public class BlogMapper {
                 .postAbstract(blogPost.getPostAbstract())
                 .title(blogPost.getTitle())
                 .content(blogPost.getContent())
+                .avatarLocation(blogPost.getAuthor().getAvatar().getLocation())
                 .category(blogPost.getCategory())
                 .author(blogPost.getAuthor().getScreenName())
+                .datePosted(blogPost.getDatePosted())
                 .comments(comments)
+                .imageLocation(blogPost.getImageLocation())
                 .build();
     }
 

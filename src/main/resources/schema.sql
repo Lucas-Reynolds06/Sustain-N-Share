@@ -84,9 +84,10 @@ CREATE TABLE BlogPost (
     Title VARCHAR(255),
     Abstract VARCHAR(500),
     Content TEXT,
-    --PostedOn DATE,
     AuthorID INT,
     Category VARCHAR(100),
+    DatePosted DATE,
+    ImageLocation VARCHAR(100),
     FOREIGN KEY (AuthorID) REFERENCES  Users(UserID)
 );
 

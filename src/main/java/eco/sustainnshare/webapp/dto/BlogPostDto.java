@@ -3,6 +3,7 @@ package eco.sustainnshare.webapp.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -17,6 +18,9 @@ public class BlogPostDto {
     private String postAbstract;
     private String content;
     private String category;
+    private String avatarLocation;
     private String author;
+    private Date datePosted;
     private List<BlogCommentDto> comments;
+    private String imageLocation;
 }

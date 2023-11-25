@@ -49,6 +49,7 @@ public class SecurityConfig {
                 "/**jpg",
                 "/**JPG",
                 "/**png",
+                "/avitars/**",
                 "/style.css");
         http.csrf(csrf->
             csrf.ignoringRequestMatchers(toH2Console())
