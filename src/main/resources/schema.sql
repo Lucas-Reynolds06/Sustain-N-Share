@@ -125,7 +125,7 @@ CREATE TABLE BlogComments(
 
 CREATE TABLE Badges(
     BadgeID INT PRIMARY KEY AUTO_INCREMENT,
-    BadgeLocation VARCHAR(20),
+    BadgeLocation VARCHAR(100),
     BadgeDescription VARCHAR(100),
     BadgeName VARCHAR(50)
 );

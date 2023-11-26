@@ -60,4 +60,7 @@ public class Users {
     private Avatar avatar;
     @Column(name="ScreenName")
     private String screenName;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<UserBadges> badges;
+
 }

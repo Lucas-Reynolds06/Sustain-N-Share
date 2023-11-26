@@ -288,6 +288,11 @@
                                 <div class="row">
                                     <div class="col-md-2"><h2>Your Badges</h2></div>
                                 </div>
+                                <div class="row">
+                                    <div th:each="badge : ${user.badges}" class="col-md-2">
+                                        <img th:src="${badge.location}" class="img-fluid">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

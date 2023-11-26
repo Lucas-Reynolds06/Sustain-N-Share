@@ -34,9 +34,11 @@ public class ItemsServiceImpl implements ItemsService {
 
     @Override
     public ItemDto saveCreatedItem(CreateItemDto item){
-        Items createdItem = itemsMapper.createdItemDtoToEntity(item);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Users donor = usersRepository.findUsersByUsername(authentication.getName());
+        // get current donated items to calculate status for badges
+        var sharedItems = getSharedItemsByUser(donor.getUserID());
+        Items createdItem = itemsMapper.createdItemDtoToEntity(item);
         createdItem.setDonor(donor);
         createdItem.setGeoLocation(donor.getGeoLocation());
         itemsRepository.save(createdItem);

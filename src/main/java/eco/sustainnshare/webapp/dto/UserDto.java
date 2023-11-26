@@ -32,4 +32,5 @@ public class UserDto {
     private String avatarLocation;
     private String screenName;
     private int avatarId;
+    private List<BadgeDto> badges = new ArrayList<>();
 }

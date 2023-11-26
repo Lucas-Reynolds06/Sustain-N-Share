@@ -1,19 +1,26 @@
 package eco.sustainnshare.webapp.mappers;
 
+import eco.sustainnshare.webapp.dto.BadgeDto;
 import eco.sustainnshare.webapp.dto.UserDto;
 import eco.sustainnshare.webapp.entity.Users;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
 public class UsersMapper {
     private final AuthoritiesMapper authoritiesMapper;
     private final StatesMapper statesMapper;
+    private final BadgeMapper badgeMapper;
 
     public UserDto userEntityToDto(Users user){
+        var badges = user.getBadges().stream().map(badge -> badgeMapper.badgeEntityToDto(badge.getBadge())).collect(Collectors.toCollection(ArrayList::new));
+
+
         //do not add password to this, it would leak to the front end, causing a security risk
         return UserDto.builder()
                 .userID(user.getUserID())
@@ -34,6 +41,7 @@ public class UsersMapper {
                 .state(user.getState().getName())
                 .avatarLocation(user.getAvatar().getLocation())
                 .avatarId(user.getAvatar().getAvatarId())
+                .badges(badges)
                 .build();
     }
 
