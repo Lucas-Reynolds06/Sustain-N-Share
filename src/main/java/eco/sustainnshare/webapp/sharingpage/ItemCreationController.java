@@ -32,6 +32,7 @@ public class ItemCreationController {
 
     @GetMapping("/create-item")
     public String createItem(Model model) {
+        model.addAttribute("currentRoute", "create-item");
         List<Categories> categories = categoriesService.getAllCategories();
         List<CategoryDto> categoryDtos = new ArrayList<>();
         for (var category: categories){
