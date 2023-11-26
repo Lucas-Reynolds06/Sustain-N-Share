@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 public class BadgeServiceImpl implements BadgeService {
 
     private final BadgesRepository repository;
+    @Override
     public Badges getFirstTimeBadge(){
         return repository.findByName("First Donation");
     }
@@ -24,5 +25,17 @@ public class BadgeServiceImpl implements BadgeService {
     @Override
     public Badges getTwentiethTimeBadge(){
         return  repository.findByName("Twentieth Donation");
+    }
+    @Override
+    public Badges getAdvocateBadge(){
+        return repository.findByName("Recycling Advocate");
+    }
+    @Override
+    public Badges getVarietyBadge(){
+        return repository.findByName("Variety Donor");
+    }
+    @Override
+    public Badges getCommenterBadge(){
+        return repository.findByName("Engaged Commenter");
     }
 }

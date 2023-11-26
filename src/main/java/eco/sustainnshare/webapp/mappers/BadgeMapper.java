@@ -22,4 +22,5 @@ public class BadgeMapper {
                 .map(this::badgeEntityToDto)
                 .toList();
     }
+
 }

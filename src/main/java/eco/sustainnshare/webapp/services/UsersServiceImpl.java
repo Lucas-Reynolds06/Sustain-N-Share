@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.Collections;
+
 @Service
 @RequiredArgsConstructor
 public class UsersServiceImpl implements UsersService {
@@ -50,6 +52,7 @@ public class UsersServiceImpl implements UsersService {
         user.setPassword(hashedPassword);
         var avatar = avatarRepository.findAvatarByLocation("default.png");
         user.setAvatar(avatar);
+        user.setBadges(Collections.EMPTY_LIST);
         user =  userRepository.save(user);
         return usersMapper.userEntityToDto(user);
     }
@@ -77,6 +80,7 @@ public class UsersServiceImpl implements UsersService {
         }
         var avatar = avatarRepository.findById(userDto.getAvatarId()).get();
         var state = statesRepository.findStateByName(userDto.getState());
+        mappedUser.setBadges(user.getBadges());
         mappedUser.setState(state);
         mappedUser.setAvatar(avatar);
         return usersMapper.userEntityToDto(userRepository.save(mappedUser));

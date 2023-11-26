@@ -10,4 +10,10 @@ public interface BadgeService {
     Badges getTenthTimeBadge();
 
     Badges getTwentiethTimeBadge();
+
+    Badges getAdvocateBadge();
+
+    Badges getVarietyBadge();
+
+    Badges getCommenterBadge();
 }

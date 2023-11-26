@@ -14,10 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -45,6 +42,11 @@ public class ItemsServiceImpl implements ItemsService {
         if (sharedItems.size() == 0){
             badges.add(UserBadges.builder()
                             .user(donor)
+                            .badge(badgeService.getAdvocateBadge())
+                            .dateIssued(new Date())
+                    .build());
+            badges.add(UserBadges.builder()
+                            .user(donor)
                             .badge(badgeService.getFirstTimeBadge())
                             .dateIssued(new Date())
                     .build());
@@ -69,6 +71,21 @@ public class ItemsServiceImpl implements ItemsService {
                     .badge(badgeService.getTwentiethTimeBadge())
                     .dateIssued(new Date())
                     .build());
+        }
+        Set<Integer> itemCategories = new HashSet<>();
+        for (var sharedItem : getSharedItemsByUser(donor.getUserID())){
+            itemCategories.add(sharedItem.getCategory());
+            itemCategories.add(item.getCategory());
+        }
+        if(itemCategories.size() >= 4){
+            var varietyBadge = donor.getBadges().stream().filter(s -> s.getBadge().getBadgeId() == 5).findAny();
+            if (!varietyBadge.isPresent()){
+                badges.add(UserBadges.builder()
+                        .user(donor)
+                        .badge(badgeService.getVarietyBadge())
+                        .dateIssued(new Date())
+                        .build());
+            }
         }
         Items createdItem = itemsMapper.createdItemDtoToEntity(item);
         createdItem.setDonor(donor);
