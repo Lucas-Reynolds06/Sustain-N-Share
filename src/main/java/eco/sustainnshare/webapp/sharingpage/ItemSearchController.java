@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -62,5 +63,15 @@ public class ItemSearchController {
         List<ItemDto> items = itemSearchService.searchItems(searchItems);
         model.addAttribute("items",items);
         return "items";
+    }
+
+    @GetMapping("/item/{id}")
+    public String searchItems(@AuthenticationPrincipal UserDetails userDetails, @PathVariable("id") Integer id, Model model){
+        var authenticated = userDetails != null;
+        model.addAttribute("currentRoute", "search-items");
+        model.addAttribute("isAuthenticated", authenticated);
+        var item = itemSearchService.getItem(id);
+        model.addAttribute("item", item);
+        return "item";
     }
 }

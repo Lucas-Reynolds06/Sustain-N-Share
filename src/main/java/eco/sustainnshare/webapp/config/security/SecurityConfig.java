@@ -54,6 +54,7 @@ public class SecurityConfig {
                 "/style.css",
                 "/sharing-page",
                 "/search-items",
+                "/item/**",
                 "/avitars/**",
                 "/style.css");
         http.csrf(csrf->

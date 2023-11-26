@@ -23,4 +23,9 @@ public class ItemSearchServiceImpl implements ItemSearchService {
                 .and(ItemsSpecification.hasGeoLocation(null));
         return itemsMapper.itemEntitiesToDtos(itemsRepository.findAll(specification));
     }
+
+    @Override
+    public ItemDto getItem(Integer id) {
+        return itemsMapper.itemEntityToDto(itemsRepository.findById(id).get());
+    }
 }
