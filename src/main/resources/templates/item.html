@@ -11,24 +11,29 @@
 <body style="background-color:rgba(248,254,229,255)">
 <div th:insert="fragments/header.html :: header"/>
 <div class="container">
-    <div th:each="item : ${items}">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="card">
             <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-6">
-                    <h1 th:text="${item.name}"/>
-                    <h3 th:text="'Donated By:' + ${item.donor.screenName}"/>
-                    <a th:href="@{/item/{id}(id=${item.itemID})}" class="btn btn-primary">I want it!</a>
+                <div class="col-md-1">
+
                 </div>
+                <div class="col-md-6">
+                    <div style="padding-top: 20px">
+                        <h1 th:text="${item.name}"/>
+                        <h3 th:text="'Donated By:' + ${item.donor.screenName}"/>
+                        <p th:text="'Description: ' + ${item.description}" />
+                        <p th:text="'Listed On: ' + ${#dates.format(item.dateListed, 'MM/dd/yyyy')}" />
+                        <a th:href="@{/item/{id}(id=${item.itemID})}" class="btn btn-primary">I want it!</a>
+                    </div>
+                </div>
+
                 <div class="col-md-4">
                     <img th:src="@{'~/item-images/' + ${item.itemID} + '/' + ${item.itemImage}}" height="200" class="img-fluid">
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <div th:insert="fragments/footer.html :: footer"/>
 </body>

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ItemSearchService {
     List<ItemDto> searchItems(SearchItemDto searchItems);
+    ItemDto getItem(Integer id);
 }
