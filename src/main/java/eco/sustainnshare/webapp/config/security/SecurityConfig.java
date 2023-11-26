@@ -49,6 +49,7 @@ public class SecurityConfig {
                 "/**jpg",
                 "/**JPG",
                 "/**png",
+                "/images/**",
                 "/item-images/**",
                 "/style.css",
                 "/sharing-page",

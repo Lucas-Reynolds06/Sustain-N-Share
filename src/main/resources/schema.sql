@@ -122,3 +122,19 @@ CREATE TABLE BlogComments(
     FOREIGN KEY (CommenterID) REFERENCES Users(UserID),
     FOREIGN KEY (BlogPostID) REFERENCES BlogPost(BlogPostID)
 );
+
+CREATE TABLE Badges(
+    BadgeID INT PRIMARY KEY AUTO_INCREMENT,
+    BadgeLocation VARCHAR(20),
+    BadgeDescription VARCHAR(100),
+    BadgeName VARCHAR(50)
+);
+
+CREATE TABLE UserBadges(
+    UserBadgeID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    BadgeID INT,
+    DateIssued DATE,
+    FOREIGN KEY (BadgeID) REFERENCES Badges(BadgeID),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
