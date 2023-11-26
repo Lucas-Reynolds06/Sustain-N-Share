@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class SharingPageController {
     @GetMapping("/sharing-page")
     public String sharingPage(Model model){
-
+        model.addAttribute("currentRoute", "sharing-page");
         return "sharing-page";
     }
 }

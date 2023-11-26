@@ -23,6 +23,7 @@ public class BlogController {
 
     @GetMapping("/blog")
     public String getBlog(Model model) {
+        model.addAttribute("currentRoute", "blog");
         model.addAttribute("posts", service.getPosts());
         return "blog";
     }
@@ -31,6 +32,7 @@ public class BlogController {
     public String getPost(@AuthenticationPrincipal UserDetails userDetails, @PathVariable("id") Integer id, Model model) {
         var authenticated = userDetails != null;
         var post = service.getBlogPostById(id);
+        model.addAttribute("currentRoute", "blog");
         model.addAttribute("blogPost", post);
         model.addAttribute("isAuthenticated", authenticated);
         model.addAttribute("postComment", new BlogPostCommentDto());

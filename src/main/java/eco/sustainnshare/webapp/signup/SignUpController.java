@@ -41,12 +41,14 @@ public class SignUpController {
         var states = stateService.getStates();
         model.addAttribute("user", new UserDto());
         model.addAttribute("states", states);
+        model.addAttribute("currentRoute", "sign-up");
         return "sign-up";
     }
 
     @GetMapping("/sign-in")
     public String signIn(Model model) {
         model.addAttribute("user", new SignInDto());
+        model.addAttribute("currentRoute", "sign-in");
         return "sign-in";
     }
 
@@ -58,6 +60,7 @@ public class SignUpController {
 
     @GetMapping("/profile")
     public String profile(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        model.addAttribute("currentRoute", "profile");
         var user = userService.getUserByUsername(userDetails.getUsername());
         var avatars = avatarService.getAvatars();
         var states = stateService.getStates();

@@ -16,6 +16,7 @@ public class ContactUsController {
     @GetMapping("/contact-us")
     public String contactUs(Model model){
         var contactDto = new ContactDto();
+        model.addAttribute("currentRoute", "contact-us");
         model.addAttribute("contact", contactDto);
         return "contact-us";
     }

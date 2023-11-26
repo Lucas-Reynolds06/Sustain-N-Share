@@ -27,6 +27,7 @@ public class ItemSearchController {
 
     @GetMapping("/search-items")
     public String searchItems(Model model) {
+        model.addAttribute("currentRoute", "search-items");
         SearchItemDto searchItems = new SearchItemDto();
         List<Categories> categories = categoriesService.getAllCategories();
         List<CategoryDto> categoryDtos = new ArrayList<>();

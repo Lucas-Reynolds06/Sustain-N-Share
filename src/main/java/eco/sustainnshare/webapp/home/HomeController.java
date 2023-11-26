@@ -14,6 +14,7 @@ public class HomeController {
     private final UsersService usersService;
     @GetMapping("/")
     public String welcome(Model model){
+        model.addAttribute("currentRoute", "home");
         return "home";
     }
 
