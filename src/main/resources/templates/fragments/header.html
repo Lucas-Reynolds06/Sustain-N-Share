@@ -55,7 +55,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/sign-in" th:classappend="${currentRoute == 'sign-in'} ? 'active'">Sign In</a>
                     </li>
-                    <li class="nav-item">
+                    <li th:if="${isAuthenticated}" class="nav-item">
                         <a class="nav-link" href="/profile" th:classappend="${currentRoute == 'profile'} ? 'active'">Profile</a>
                     </li>
                 </ul>

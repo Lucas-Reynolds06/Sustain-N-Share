@@ -37,29 +37,33 @@ public class SignUpController {
     }
 
     @GetMapping("/sign-up")
-    public String signUp(Model model){
+    public String signUp(@AuthenticationPrincipal UserDetails userDetails, Model model){
+        var authenticated = userDetails != null;
         var states = stateService.getStates();
         model.addAttribute("user", new UserDto());
         model.addAttribute("states", states);
         model.addAttribute("currentRoute", "sign-up");
+        model.addAttribute("isAuthenticated", authenticated);
         return "sign-up";
     }
 
     @GetMapping("/sign-in")
-    public String signIn(Model model) {
+    public String signIn(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        var authenticated = userDetails != null;
         model.addAttribute("user", new SignInDto());
         model.addAttribute("currentRoute", "sign-in");
+        model.addAttribute("isAuthenticated", authenticated);
         return "sign-in";
     }
 
     @PostMapping("/sign-in")
     public String signIn(Model model, SignInDto userDto) {
-
         return "";
     }
 
     @GetMapping("/profile")
     public String profile(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        var authenticated = userDetails != null;
         model.addAttribute("currentRoute", "profile");
         var user = userService.getUserByUsername(userDetails.getUsername());
         var avatars = avatarService.getAvatars();
@@ -73,6 +77,7 @@ public class SignUpController {
         model.addAttribute("items", items);
         model.addAttribute("receivedItems", claimed);
         model.addAttribute("impactPoints",impactPoints);
+        model.addAttribute("isAuthenticated", authenticated);
         return "profile";
     }
 

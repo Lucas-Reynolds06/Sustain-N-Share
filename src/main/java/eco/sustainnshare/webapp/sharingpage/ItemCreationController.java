@@ -10,6 +10,8 @@ import eco.sustainnshare.webapp.services.ConditionsService;
 import eco.sustainnshare.webapp.services.ItemsService;
 import eco.sustainnshare.webapp.util.FileUploadUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -31,7 +33,9 @@ public class ItemCreationController {
     private final ItemsService itemsService;
 
     @GetMapping("/create-item")
-    public String createItem(Model model) {
+    public String createItem(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        var authenticated = userDetails != null;
+        model.addAttribute("isAuthenticated", authenticated);
         model.addAttribute("currentRoute", "create-item");
         List<Categories> categories = categoriesService.getAllCategories();
         List<CategoryDto> categoryDtos = new ArrayList<>();
