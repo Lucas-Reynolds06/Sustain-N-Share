@@ -61,6 +61,6 @@ public class Users {
     @Column(name="ScreenName")
     private String screenName;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    private List<UserBadges> badges;
+    private List<UserBadges> badges = new ArrayList<>();
 
 }

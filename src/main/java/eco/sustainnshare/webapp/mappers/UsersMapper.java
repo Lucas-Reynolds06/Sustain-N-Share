@@ -2,6 +2,7 @@ package eco.sustainnshare.webapp.mappers;
 
 import eco.sustainnshare.webapp.dto.BadgeDto;
 import eco.sustainnshare.webapp.dto.UserDto;
+import eco.sustainnshare.webapp.entity.UserBadges;
 import eco.sustainnshare.webapp.entity.Users;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

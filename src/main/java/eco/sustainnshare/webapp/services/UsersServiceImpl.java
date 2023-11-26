@@ -1,6 +1,7 @@
 package eco.sustainnshare.webapp.services;
 
 import eco.sustainnshare.webapp.dto.UserDto;
+import eco.sustainnshare.webapp.entity.UserBadges;
 import eco.sustainnshare.webapp.mappers.UsersMapper;
 import eco.sustainnshare.webapp.repository.AvatarRepository;
 import eco.sustainnshare.webapp.repository.StatesRepository;
@@ -9,6 +10,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +25,7 @@ public class UsersServiceImpl implements UsersService {
     private final UsersMapper usersMapper;
     private final BCryptPasswordEncoder passwordEncoder;
     private final AvatarRepository avatarRepository;
-
+    private final BadgeService badgeService;
 
     @Override
     public UserDto getUserByID(int id) {
@@ -50,6 +56,11 @@ public class UsersServiceImpl implements UsersService {
         user.setPassword(hashedPassword);
         var avatar = avatarRepository.findAvatarByLocation("default.png");
         user.setAvatar(avatar);
+        user.setBadges(List.of(UserBadges.builder()
+                .user(user)
+                .badge(badgeService.getMemberBadge())
+                .dateIssued(new Date())
+                .build()));
         user =  userRepository.save(user);
         return usersMapper.userEntityToDto(user);
     }
@@ -77,6 +88,7 @@ public class UsersServiceImpl implements UsersService {
         }
         var avatar = avatarRepository.findById(userDto.getAvatarId()).get();
         var state = statesRepository.findStateByName(userDto.getState());
+        mappedUser.setBadges(user.getBadges());
         mappedUser.setState(state);
         mappedUser.setAvatar(avatar);
         return usersMapper.userEntityToDto(userRepository.save(mappedUser));

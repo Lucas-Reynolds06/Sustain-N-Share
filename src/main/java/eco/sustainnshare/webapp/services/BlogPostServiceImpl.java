@@ -3,7 +3,9 @@ package eco.sustainnshare.webapp.services;
 import eco.sustainnshare.webapp.dto.BlogPostCommentDto;
 import eco.sustainnshare.webapp.dto.BlogPostDto;
 import eco.sustainnshare.webapp.entity.BlogComment;
+import eco.sustainnshare.webapp.entity.UserBadges;
 import eco.sustainnshare.webapp.mappers.BlogMapper;
+import eco.sustainnshare.webapp.repository.BlogPostCommentRepository;
 import eco.sustainnshare.webapp.repository.BlogRepository;
 import eco.sustainnshare.webapp.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,8 @@ public class BlogPostServiceImpl implements BlogPostService {
     private final BlogRepository repository;
     private final BlogMapper mapper;
     private final UsersRepository usersRepository;
+    private final BlogPostCommentRepository blogPostCommentRepository;
+    private final BadgeService badgeService;
 
 
     @Override
@@ -41,7 +45,14 @@ public class BlogPostServiceImpl implements BlogPostService {
         comment.setBlogPost(blog);
         comment.setDatePosted(new Date());
         blog.getComments().add(comment);
+        if (blogPostCommentRepository.findAllByCommenter(user).size() == 0){
+            user.getBadges().add(UserBadges.builder()
+                            .user(user)
+                            .badge(badgeService.getCommenterBadge())
+                            .dateIssued(new Date())
+                    .build());
+            usersRepository.save(user);
+        }
         repository.save(blog);
-
     }
 }
