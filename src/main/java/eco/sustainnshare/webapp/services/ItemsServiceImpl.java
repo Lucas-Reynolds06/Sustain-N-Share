@@ -72,6 +72,13 @@ public class ItemsServiceImpl implements ItemsService {
                     .dateIssued(new Date())
                     .build());
         }
+        if (sharedItems.size() == 49){
+            badges.add(UserBadges.builder()
+                    .user(donor)
+                    .badge(badgeService.getWarriorBadge())
+                    .dateIssued(new Date())
+                    .build());
+        }
         Set<Integer> itemCategories = new HashSet<>();
         for (var sharedItem : getSharedItemsByUser(donor.getUserID())){
             itemCategories.add(sharedItem.getCategory());

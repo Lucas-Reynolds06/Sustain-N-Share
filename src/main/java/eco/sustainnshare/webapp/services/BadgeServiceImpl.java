@@ -38,4 +38,12 @@ public class BadgeServiceImpl implements BadgeService {
     public Badges getCommenterBadge(){
         return repository.findByName("Engaged Commenter");
     }
+    @Override
+    public Badges getMemberBadge(){
+        return repository.findByName("New Member");
+    }
+    @Override
+    public Badges getWarriorBadge(){
+        return repository.findByName("Eco Warrior");
+    }
 }

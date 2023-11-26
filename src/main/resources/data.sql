@@ -127,9 +127,18 @@ Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/
 Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/twentiethTime.png', 'Earn this badge for your twentieth donation', 'Twentieth Donation')
 Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/varietyDonor.png', 'Earn this badge for donating an item in 4 separate categories', 'Variety Donor')
 Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/recyclingAdvocate.png', 'Earn this badge for advocating for sustaining the future', 'Recycling Advocate')
+Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/engagedCommenter.png', 'Earn this badge for your first blog comment', 'Engaged Commenter')
+Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/communityHero.png', 'Earn this badge for donating, receiving, and commenting', 'Community Hero')
+Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/ecoWarrior.png', 'Earn this badge for your fiftieth donation', 'Eco Warrior')
+Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/newMember.png', 'Earn this badge for creating your account', 'New Member')
+Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/sharing.png', 'Earn this badge for sharing Sustain N'' Share''s mission with a friend', 'Sharing Badge')
+Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/sustainabilityChamp.png', 'Earn this badge for receiving your first item', 'Sustainability Champion')
 --Insert default user badges
+Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (1, 10, '2023-11-15')
+Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (2, 10, '2023-11-15')
+Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (3, 10, '2023-11-15')
 Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (1, 6, '2023-11-16')
 Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (1, 1, '2023-11-16')
-
-
-
+Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (1, 7, '2023-11-24')
+Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (2, 7, '2023-11-24')
+Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (3, 7, '2023-11-24')

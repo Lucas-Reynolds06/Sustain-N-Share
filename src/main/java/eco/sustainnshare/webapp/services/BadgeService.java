@@ -16,4 +16,8 @@ public interface BadgeService {
     Badges getVarietyBadge();
 
     Badges getCommenterBadge();
+
+    Badges getMemberBadge();
+
+    Badges getWarriorBadge();
 }
