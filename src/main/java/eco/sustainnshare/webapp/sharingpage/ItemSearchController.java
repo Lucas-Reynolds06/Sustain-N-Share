@@ -9,6 +9,8 @@ import eco.sustainnshare.webapp.services.ConditionsService;
 import eco.sustainnshare.webapp.services.ItemSearchService;
 import eco.sustainnshare.webapp.services.StateService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +28,8 @@ public class ItemSearchController {
     private final StateService stateService;
 
     @GetMapping("/search-items")
-    public String searchItems(Model model) {
+    public String searchItems(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        var authenticated = userDetails != null;
         model.addAttribute("currentRoute", "search-items");
         SearchItemDto searchItems = new SearchItemDto();
         List<Categories> categories = categoriesService.getAllCategories();
@@ -50,6 +53,7 @@ public class ItemSearchController {
         model.addAttribute("categories",categoryDtos);
         model.addAttribute("conditions",conditionDtos);
         model.addAttribute("states",stateDtos);
+        model.addAttribute("isAuthenticated", authenticated);
         return "search-form";
     }
 
