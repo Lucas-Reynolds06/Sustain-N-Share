@@ -1,6 +1,7 @@
 package eco.sustainnshare.webapp.services;
 
 import eco.sustainnshare.webapp.entity.Items;
+import jakarta.persistence.criteria.Predicate;
 import org.locationtech.jts.geom.Point;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -14,7 +15,12 @@ public class ItemsSpecification {
             if (searchText == null){
                 return criteriaBuilder.isTrue(criteriaBuilder.literal(true));
             }
-            return criteriaBuilder.equal(root.get("name"),searchText);
+            String[] keywords = searchText.split(" ");
+            Predicate predicate = criteriaBuilder.conjunction();
+            for (String keyword : keywords){
+                predicate = criteriaBuilder.and(predicate, criteriaBuilder.like(criteriaBuilder.lower(root.get("name")),"%" + keyword.toLowerCase() + "%"));
+            }
+            return predicate;
         });
     }
     public static Specification<Items> hasCategory(Integer category){
