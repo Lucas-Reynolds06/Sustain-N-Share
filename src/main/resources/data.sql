@@ -122,9 +122,10 @@ Insert into States (Name) values ('Nebraska')
     Insert into BlogComments(BlogPostID, CommenterID, Comment, DatePosted) VALUES (4, 2, 'This is a great article!  Thanks for posting!', '2023-11-24')
     Insert into BlogComments(BlogPostID, CommenterID, Comment, DatePosted) VALUES (5, 2, 'This is a great article!  Thanks for posting!', '2023-11-24')
 
-    Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/firstTime.png', 'Earn this badge for your first donation', 'First Time Donation')
+    Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/firstTime.png', 'Earn this badge for your first donation', 'First Donation')
     Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/fifthTime.png', 'Earn this badge for your fifth donation', 'Fifth Donation')
-    Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/fifthTime.png', 'Earn this badge for your tenth donation', 'Tenth Donation')
+    Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/tenthTime.png', 'Earn this badge for your tenth donation', 'Tenth Donation')
+    Insert into Badges(BadgeLocation, BadgeDescription, BadgeName) VALUES ('/badges/twentiethTime.png', 'Earn this badge for you twentieth donation', 'Twentieth Donation')
     Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (1, 1, '2023-11-16')
 
 
