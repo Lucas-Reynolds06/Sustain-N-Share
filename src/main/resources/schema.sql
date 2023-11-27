@@ -123,6 +123,22 @@ CREATE TABLE BlogComments(
     FOREIGN KEY (BlogPostID) REFERENCES BlogPost(BlogPostID)
 );
 
+CREATE TABLE BlogLikes(
+    BlogLikeID INT PRIMARY KEY AUTO_INCREMENT,
+    LikedByID INT,
+    BlogPostID INT,
+    FOREIGN KEY (LikedByID) REFERENCES Users(UserID),
+    FOREIGN KEY (BlogPostID) REFERENCES BlogPost(BlogPostID)
+);
+
+CREATE TABLE BlogHelpful(
+      BlogHelpfulID INT PRIMARY KEY AUTO_INCREMENT,
+      LikedByID INT,
+      BlogPostID INT,
+      FOREIGN KEY (LikedByID) REFERENCES Users(UserID),
+      FOREIGN KEY (BlogPostID) REFERENCES BlogPost(BlogPostID)
+);
+
 CREATE TABLE Badges(
     BadgeID INT PRIMARY KEY AUTO_INCREMENT,
     BadgeLocation VARCHAR(100),
