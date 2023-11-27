@@ -1,9 +1,9 @@
 package eco.sustainnshare.webapp.mappers;
 
-import eco.sustainnshare.webapp.dto.BlogCommentDto;
-import eco.sustainnshare.webapp.dto.BlogPostCommentDto;
-import eco.sustainnshare.webapp.dto.BlogPostDto;
+import eco.sustainnshare.webapp.dto.*;
 import eco.sustainnshare.webapp.entity.BlogComment;
+import eco.sustainnshare.webapp.entity.BlogHelpful;
+import eco.sustainnshare.webapp.entity.BlogLikes;
 import eco.sustainnshare.webapp.entity.BlogPost;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -28,12 +28,34 @@ public class BlogMapper {
                 .datePosted(blogPost.getDatePosted())
                 .comments(comments)
                 .imageLocation(blogPost.getImageLocation())
+                .likes(getLikeDto(blogPost.getLikes()))
+                .helpfuls(getHelpfulDto(blogPost.getHelpful()))
                 .build();
     }
 
     public List<BlogPostDto> blogPostsToDtos(List<BlogPost> posts) {
         return posts.stream().map(this::blogPostToDto)
                 .toList();
+    }
+
+    private List<BlogLikeDto> getLikeDto(List<BlogLikes> likes) {
+        var likeList = new ArrayList<BlogLikeDto>();
+        likes.forEach(like -> {
+            likeList.add(BlogLikeDto.builder()
+                            .likedBy(like.getLikedBy().getUserID())
+                    .build());
+        });
+        return likeList;
+    }
+
+    private List<BlogHelpfulDto> getHelpfulDto(List<BlogHelpful> helpfuls) {
+        var likeList = new ArrayList<BlogHelpfulDto>();
+        helpfuls.forEach(like -> {
+            likeList.add(BlogHelpfulDto.builder()
+                    .likedBy(like.getLikedBy().getUserID())
+                    .build());
+        });
+        return likeList;
     }
 
     private List<BlogCommentDto> getCommentList(List<BlogComment> comments) {
@@ -49,6 +71,7 @@ public class BlogMapper {
         });
         return commentList;
     }
+
 
     public BlogComment commentDtoToBlogComment(BlogPostCommentDto postComment) {
         return BlogComment.builder()

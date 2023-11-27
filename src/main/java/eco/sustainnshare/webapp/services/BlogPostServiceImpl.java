@@ -3,6 +3,8 @@ package eco.sustainnshare.webapp.services;
 import eco.sustainnshare.webapp.dto.BlogPostCommentDto;
 import eco.sustainnshare.webapp.dto.BlogPostDto;
 import eco.sustainnshare.webapp.entity.BlogComment;
+import eco.sustainnshare.webapp.entity.BlogHelpful;
+import eco.sustainnshare.webapp.entity.BlogLikes;
 import eco.sustainnshare.webapp.entity.UserBadges;
 import eco.sustainnshare.webapp.mappers.BlogMapper;
 import eco.sustainnshare.webapp.repository.BlogPostCommentRepository;
@@ -45,7 +47,7 @@ public class BlogPostServiceImpl implements BlogPostService {
         comment.setBlogPost(blog);
         comment.setDatePosted(new Date());
         blog.getComments().add(comment);
-        if (blogPostCommentRepository.findAllByCommenter(user).size() == 0){
+        if (blogPostCommentRepository.findAllByCommenter(user).isEmpty()){
             user.getBadges().add(UserBadges.builder()
                             .user(user)
                             .badge(badgeService.getCommenterBadge())
@@ -55,4 +57,31 @@ public class BlogPostServiceImpl implements BlogPostService {
         }
         repository.save(blog);
     }
+
+    @Override
+    public int likePost(int userID, int postId) {
+        var post = repository.findById(postId).get();
+        var user = usersRepository.findById(userID).get();
+        var like = BlogLikes.builder()
+                .likedBy(user)
+                .blogPost(post)
+                .build();
+        post.getLikes().add(like);
+        repository.save(post);
+        return post.getLikes().size();
+    }
+
+    @Override
+    public int findPostHelpful(int userID, int postId) {
+        var post = repository.findById(postId).get();
+        var user = usersRepository.findById(userID).get();
+        var helpful = BlogHelpful.builder()
+                .likedBy(user)
+                .blogPost(post)
+                .build();
+        post.getHelpful().add(helpful);
+        repository.save(post);
+        return post.getHelpful().size() + 1;
+    }
+
 }

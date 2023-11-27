@@ -10,4 +10,7 @@ public interface BlogPostService {
 
     BlogPostDto getBlogPostById(Integer id);
     void saveComment(int userID, BlogPostCommentDto postComment);
+    int likePost(int userID, int postId);
+
+    int findPostHelpful(int userID, int postId);
 }

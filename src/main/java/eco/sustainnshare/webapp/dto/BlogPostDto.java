@@ -23,4 +23,6 @@ public class BlogPostDto {
     private Date datePosted;
     private List<BlogCommentDto> comments;
     private String imageLocation;
+    private List<BlogLikeDto> likes;
+    private List<BlogHelpfulDto> helpfuls;
 }

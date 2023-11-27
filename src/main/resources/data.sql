@@ -142,3 +142,6 @@ Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (1, 1, '2023-11-16')
 Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (1, 7, '2023-11-24')
 Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (2, 7, '2023-11-24')
 Insert into UserBadges(UserID, BadgeID, DateIssued) VALUES (3, 7, '2023-11-24')
+
+Insert into BlogLikes(LikedByID, BlogPostID) VALUES (1, 2)
+Insert into BlogHelpful(LikedByID, BlogPostID) VALUES (2, 3)

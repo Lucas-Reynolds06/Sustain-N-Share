@@ -8,9 +8,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RequiredArgsConstructor
@@ -47,4 +45,28 @@ public class BlogController {
         return "redirect:/blog/" + postComment.getPostId();
     }
 
+
+    @PostMapping("/like-post")
+    @ResponseBody
+    public String likePost(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("postId") int postId) {
+        var user = userService.getUserByUsername(userDetails.getUsername());
+        int updatedLikeCount = service.likePost(user.getUserID(), postId);
+        return "{\"likes\": " + updatedLikeCount + "}";
+    }
+
+    @PostMapping("/helpful-post")
+    @ResponseBody
+    public String helpfulPost(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("postId") int postId) {
+        var user = userService.getUserByUsername(userDetails.getUsername());
+        int updateHelpfulCount = service.findPostHelpful(user.getUserID(), postId);
+        return "{\"helpful\": " + updateHelpfulCount + "}";
+    }
+
+    @PostMapping("/addComment")
+    @ResponseBody
+    public String addComment(@AuthenticationPrincipal UserDetails userDetails,@ModelAttribute BlogPostCommentDto postComment) {
+        var user = userService.getUserByUsername(userDetails.getUsername());
+        service.saveComment(user.getUserID(), postComment);
+        return "Comment added successfully";
+    }
 }

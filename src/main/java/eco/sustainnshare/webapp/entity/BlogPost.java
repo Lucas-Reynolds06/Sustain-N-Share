@@ -39,4 +39,8 @@ public class BlogPost {
     private List<BlogComment> comments;
     @Column(name = "ImageLocation")
     private String imageLocation;
+    @OneToMany(mappedBy = "blogPost", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<BlogLikes> likes;
+    @OneToMany(mappedBy = "blogPost", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<BlogHelpful> helpful;
 }
