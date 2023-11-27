@@ -119,25 +119,20 @@
                 </h2>
             </div>
             <div th:each="comment : ${blogPost.comments}">
-                <div class="row">
+                <div class="row" >
                     <div class="card">
-                        <div class="row">
-                            <div class="col-md-3">
+                        <div class="row" style="padding-top: 10px; padding-bottom: 20px;">
+                            <div class="col-md-3 d-flex align-items-center">
                                 <div class="image-container">
                                     <img th:src="|/avitars/${comment.avatarLocation}|">
                                 </div>
-                            </div>
-                            <div class="col-md-6"></div>
-                            <div class="col-md-3">
-                                <span>Date Posted: </span><span th:text="${#dates.format(comment.postedDate, 'MM/dd/yyyy')}"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
                                 <div th:text="${comment.author}" style="font-weight: bolder; padding-top: 10px;"></div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <div th:text="${comment.comment}"/>
+                            </div>
+                            <div class="col-md-3">
+                                <span>Date Posted: </span><span th:text="${#dates.format(comment.postedDate, 'MM/dd/yyyy')}"></span>
                             </div>
                         </div>
                     </div>
