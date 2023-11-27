@@ -30,10 +30,19 @@ public class BlogController {
     public String getPost(@AuthenticationPrincipal UserDetails userDetails, @PathVariable("id") Integer id, Model model) {
         var authenticated = userDetails != null;
         var post = service.getBlogPostById(id);
+        var blogs = service.getPosts();
+        Integer next = blogs.size()  > id ? id + 1 : null;
+        Integer previous = id > 1 ? id -1 : null;
+
+
         model.addAttribute("currentRoute", "blog");
         model.addAttribute("blogPost", post);
         model.addAttribute("isAuthenticated", authenticated);
         model.addAttribute("postComment", new BlogPostCommentDto());
+        model.addAttribute("previous", previous);
+        model.addAttribute("next", next);
+        model.addAttribute("first", 1);
+        model.addAttribute("last", blogs.get(blogs.size()-1).getBlogPostId());
         return "blog-post";
     }
 
