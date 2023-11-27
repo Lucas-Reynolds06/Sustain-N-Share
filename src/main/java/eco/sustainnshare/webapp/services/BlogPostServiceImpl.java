@@ -84,4 +84,10 @@ public class BlogPostServiceImpl implements BlogPostService {
         return post.getHelpful().size() + 1;
     }
 
+    @Override
+    public List<BlogPostDto> getMyCommentedBlogs(int userID) {
+        var blogs = repository.findAllByCommentsUserId(userID);
+        return mapper.blogPostsToDtos(blogs);
+    }
+
 }

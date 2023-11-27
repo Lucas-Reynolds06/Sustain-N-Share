@@ -13,4 +13,6 @@ public interface BlogPostService {
     int likePost(int userID, int postId);
 
     int findPostHelpful(int userID, int postId);
+
+    List<BlogPostDto> getMyCommentedBlogs(int userID);
 }
