@@ -21,10 +21,14 @@
                 <div class="col-md-6">
                     <div style="padding-top: 20px">
                         <h1 th:text="${item.name}"/>
+                        <img th:src="|/avitars/${item.donor.avatarLocation}|" width="80">
                         <h3 th:text="'Donated By:' + ${item.donor.screenName}"/>
                         <p th:text="'Description: ' + ${item.description}" />
                         <p th:text="'Listed On: ' + ${#dates.format(item.dateListed, 'MM/dd/yyyy')}" />
-                        <a th:href="@{/item/{id}(id=${item.itemID})}" class="btn btn-primary">I want it!</a>
+                        <h3 th:if="${!isAuthenticated}">You must login to claim item!</h3>
+                        <form action="#" th:if="${isAuthenticated}" th:action="@{/item-request/{id}(id=${item.itemID})}" method="post">
+                            <button type="submit" class="btn btn-primary">I want it!</button>
+                        </form>
                     </div>
                 </div>
 

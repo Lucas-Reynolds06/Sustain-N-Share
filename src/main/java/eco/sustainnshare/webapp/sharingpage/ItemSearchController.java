@@ -4,10 +4,7 @@ import eco.sustainnshare.webapp.dto.*;
 import eco.sustainnshare.webapp.entity.Categories;
 import eco.sustainnshare.webapp.entity.Conditions;
 import eco.sustainnshare.webapp.entity.Items;
-import eco.sustainnshare.webapp.services.CategoriesService;
-import eco.sustainnshare.webapp.services.ConditionsService;
-import eco.sustainnshare.webapp.services.ItemSearchService;
-import eco.sustainnshare.webapp.services.StateService;
+import eco.sustainnshare.webapp.services.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,6 +24,7 @@ public class ItemSearchController {
     private final CategoriesService categoriesService;
     private final ConditionsService conditionsService;
     private final StateService stateService;
+    private final UsersService userService;
 
     @GetMapping("/search-items")
     public String searchItems(@AuthenticationPrincipal UserDetails userDetails, Model model) {
@@ -73,5 +71,12 @@ public class ItemSearchController {
         var item = itemSearchService.getItem(id);
         model.addAttribute("item", item);
         return "item";
+    }
+    @PostMapping("/item-request/{id}")
+    public String requestItem(@AuthenticationPrincipal UserDetails userDetails, @PathVariable("id") Integer id, Model model){
+        var user = userService.getUserByUsername(userDetails.getUsername());
+        model.addAttribute("currentRoute","item-request");
+        itemSearchService.requestItem(user.getUserID(), id);
+        return "redirect:/profile";
     }
 }
