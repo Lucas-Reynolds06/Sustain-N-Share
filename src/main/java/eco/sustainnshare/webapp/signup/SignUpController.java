@@ -1,8 +1,9 @@
 package eco.sustainnshare.webapp.signup;
 
-import eco.sustainnshare.webapp.dto.BlogPostDto;
 import eco.sustainnshare.webapp.dto.SignInDto;
+import eco.sustainnshare.webapp.dto.TransactionDto;
 import eco.sustainnshare.webapp.dto.UserDto;
+import eco.sustainnshare.webapp.mappers.UsersMapper;
 import eco.sustainnshare.webapp.services.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,6 +25,8 @@ public class SignUpController {
     private final AvatarService avatarService;
     private final ItemsService itemsService;
     private final BlogPostService blogPostService;
+    private final ItemSearchService itemSearchService;
+    private final UsersMapper usersMapper;
 
     @PostMapping("/sign-up")
     public String signUp(Model model, UserDto userDto, RedirectAttributes redirectAttributes) {
@@ -81,6 +84,7 @@ public class SignUpController {
                 }
             }
         }
+        List<TransactionDto> transactionDtos = itemSearchService.getRequestedItems(user.getUserID());
         model.addAttribute("user", user);
         model.addAttribute("avatars", avatars);
         model.addAttribute("states", states);
@@ -89,6 +93,7 @@ public class SignUpController {
         model.addAttribute("impactPoints",impactPoints);
         model.addAttribute("isAuthenticated", authenticated);
         model.addAttribute("blogComments", commentCount);
+        model.addAttribute("transactions", transactionDtos);
         return "profile";
     }
 

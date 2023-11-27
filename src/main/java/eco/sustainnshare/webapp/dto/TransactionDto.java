@@ -14,7 +14,9 @@ import java.util.Date;
 public class TransactionDto {
     private Integer transactionID;
     private Integer itemID;
+    private ItemDto item;
     private Integer donorID;
+    private DonorDto donor;
     private Integer receiverID;
     private Date dateInitiated;
     private Date dateCompleted;

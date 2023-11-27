@@ -3,16 +3,15 @@ package eco.sustainnshare.webapp.services;
 import eco.sustainnshare.webapp.dto.ItemDto;
 import eco.sustainnshare.webapp.dto.SearchItemDto;
 import eco.sustainnshare.webapp.dto.TransactionDto;
-import eco.sustainnshare.webapp.dto.UserDto;
 import eco.sustainnshare.webapp.mappers.ItemsMapper;
 import eco.sustainnshare.webapp.mappers.TransactionsMapper;
 import eco.sustainnshare.webapp.repository.ItemsRepository;
 import eco.sustainnshare.webapp.repository.TransactionsRepository;
-import eco.sustainnshare.webapp.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @Service
@@ -47,5 +46,13 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         transactionDto.setDateCompleted(null);
         transactionsRepository.save(transactionsMapper.transactionDtoToEntity(transactionDto));
         return transactionDto;
+    }
+    public List<TransactionDto> getRequestedItems(int userID){
+        var transactions = transactionsRepository.findAllByReceiver(userID);
+        List<TransactionDto> dtos = new ArrayList<>();
+        for (var transaction : transactions){
+            dtos.add(transactionsMapper.transactionEntityToDto(transaction));
+        }
+        return dtos;
     }
 }
