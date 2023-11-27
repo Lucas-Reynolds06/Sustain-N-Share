@@ -1,11 +1,9 @@
 package eco.sustainnshare.webapp.signup;
 
+import eco.sustainnshare.webapp.dto.BlogPostDto;
 import eco.sustainnshare.webapp.dto.SignInDto;
 import eco.sustainnshare.webapp.dto.UserDto;
-import eco.sustainnshare.webapp.services.AvatarService;
-import eco.sustainnshare.webapp.services.ItemsService;
-import eco.sustainnshare.webapp.services.StateService;
-import eco.sustainnshare.webapp.services.UsersService;
+import eco.sustainnshare.webapp.services.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class SignUpController {
@@ -23,6 +23,7 @@ public class SignUpController {
     private final StateService stateService;
     private final AvatarService avatarService;
     private final ItemsService itemsService;
+    private final BlogPostService blogPostService;
 
     @PostMapping("/sign-up")
     public String signUp(Model model, UserDto userDto, RedirectAttributes redirectAttributes) {
@@ -71,6 +72,15 @@ public class SignUpController {
         var items = itemsService.getSharedItemsByUser(user.getUserID());
         var claimed = itemsService.getClaimedItemsByUser(user.getUserID());
         var impactPoints = itemsService.calculateImpactPoints(user.getUserID());
+        var blogPostComments = blogPostService.getMyCommentedBlogs(user.getUserID());
+        int commentCount = 0;
+        for(var post : blogPostComments) {
+            for(var comment: post.getComments()) {
+                if(comment.getAuthor().equals(user.getScreenName())){
+                    commentCount++;
+                }
+            }
+        }
         model.addAttribute("user", user);
         model.addAttribute("avatars", avatars);
         model.addAttribute("states", states);
@@ -78,6 +88,7 @@ public class SignUpController {
         model.addAttribute("receivedItems", claimed);
         model.addAttribute("impactPoints",impactPoints);
         model.addAttribute("isAuthenticated", authenticated);
+        model.addAttribute("blogComments", commentCount);
         return "profile";
     }
 
