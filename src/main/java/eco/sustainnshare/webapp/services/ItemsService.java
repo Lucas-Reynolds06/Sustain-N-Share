@@ -12,6 +12,6 @@ public interface ItemsService {
     List<ItemDto> getSharedItemsByUser(int userID);
     List<ItemDto> getClaimedItemsByUser(int userID);
     int calculateImpactPoints(int userID);
-
-    List<ItemDto> getRequestedItems(int userID);
+    List<ItemDto> getOtherPeopleRequestedItems(int userID);
+    List<ItemDto> getMyRequestedItems(int userID);
 }

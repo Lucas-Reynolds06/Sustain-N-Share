@@ -1,6 +1,5 @@
 package eco.sustainnshare.webapp.signup;
 
-import eco.sustainnshare.webapp.dto.BlogPostDto;
 import eco.sustainnshare.webapp.dto.SignInDto;
 import eco.sustainnshare.webapp.dto.UserDto;
 import eco.sustainnshare.webapp.services.*;
@@ -12,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -69,7 +66,8 @@ public class SignUpController {
         var claimed = itemsService.getClaimedItemsByUser(user.getUserID());
         var impactPoints = itemsService.calculateImpactPoints(user.getUserID());
         var blogPostComments = blogPostService.getMyCommentedBlogs(user.getUserID());
-        var requestedItems = itemsService.getRequestedItems(user.getUserID());
+        var otherPeopleRequestedItems = itemsService.getOtherPeopleRequestedItems(user.getUserID());
+        var myRequestedItems = itemsService.getMyRequestedItems(user.getUserID());
         int commentCount = 0;
         for(var post : blogPostComments) {
             for(var comment: post.getComments()) {
@@ -86,7 +84,9 @@ public class SignUpController {
         model.addAttribute("impactPoints",impactPoints);
         model.addAttribute("isAuthenticated", authenticated);
         model.addAttribute("blogComments", commentCount);
-        model.addAttribute("requestedItems", requestedItems);
+        model.addAttribute("otherPeopleRequestedItems", otherPeopleRequestedItems);
+        model.addAttribute("myRequestedItem", myRequestedItems);
+
         return "profile";
     }
 
