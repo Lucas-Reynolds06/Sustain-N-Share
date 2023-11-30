@@ -3,6 +3,7 @@ package eco.sustainnshare.webapp.sharingpage;
 import eco.sustainnshare.webapp.dto.CategoryDto;
 import eco.sustainnshare.webapp.dto.ConditionDto;
 import eco.sustainnshare.webapp.dto.CreateItemDto;
+import eco.sustainnshare.webapp.dto.UserDto;
 import eco.sustainnshare.webapp.entity.Categories;
 import eco.sustainnshare.webapp.entity.Conditions;
 import eco.sustainnshare.webapp.services.CategoriesService;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,7 +65,8 @@ public class ItemCreationController {
                            @RequestParam("description") String description,
                            @RequestParam("itemImage") MultipartFile multipartFile,
                            @RequestParam("category") Integer category,
-                           @RequestParam("condition") Integer condition) throws IOException {
+                           @RequestParam("condition") Integer condition,
+                           RedirectAttributes redirectAttributes) throws IOException {
         CreateItemDto item = new CreateItemDto();
         item.setItemName(name);
         item.setDescription(description);
@@ -75,6 +78,7 @@ public class ItemCreationController {
         var savedItem = itemsService.saveCreatedItem(item);
         String itemDirectory = String.format("item-images/%d",savedItem.getItemID());
         FileUploadUtil.saveFile(itemDirectory,itemImage,multipartFile);
-        return "item-saved";
+        redirectAttributes.addFlashAttribute("creationSuccess", "Item Shared!");
+        return "redirect:/profile";
     }
 }

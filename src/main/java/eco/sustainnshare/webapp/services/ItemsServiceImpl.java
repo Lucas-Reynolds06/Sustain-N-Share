@@ -2,12 +2,14 @@ package eco.sustainnshare.webapp.services;
 
 import eco.sustainnshare.webapp.dto.CreateItemDto;
 import eco.sustainnshare.webapp.dto.ItemDto;
+import eco.sustainnshare.webapp.dto.TransactionDto;
 import eco.sustainnshare.webapp.entity.Items;
 import eco.sustainnshare.webapp.entity.UserBadges;
 import eco.sustainnshare.webapp.entity.Users;
 import eco.sustainnshare.webapp.mappers.ItemsMapper;
 import eco.sustainnshare.webapp.repository.CategoriesRepository;
 import eco.sustainnshare.webapp.repository.ItemsRepository;
+import eco.sustainnshare.webapp.repository.TransactionsRepository;
 import eco.sustainnshare.webapp.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -24,6 +26,7 @@ public class ItemsServiceImpl implements ItemsService {
     private final ItemsMapper itemsMapper;
     private final UsersRepository usersRepository;
     private final BadgeService badgeService;
+    private final TransactionsRepository transactionsRepository;
     @Override
     public Items getItemByID(int id) {
         var item = itemsRepository.findById(id);
@@ -130,5 +133,17 @@ public class ItemsServiceImpl implements ItemsService {
             total += ImpactPoints.getPointsByCategory(item.getCategory().getName());
         }
         return total;
+    }
+
+    @Override
+    public List<ItemDto> getRequestedItems(int userID) {
+        var user = usersRepository.findById(userID).get();
+        var transactions = transactionsRepository.getByDonorId(user.getUserID());
+        var ids = new ArrayList<Integer>();
+        for(var transaction : transactions) {
+            ids.add(transaction.getItem().getItemID());
+        }
+        var items = itemsRepository.findAllByItemIDIs(ids);
+        return itemsMapper.itemEntitiesToDtos(items);
     }
 }

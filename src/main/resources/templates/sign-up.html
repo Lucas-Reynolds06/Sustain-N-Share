@@ -222,7 +222,7 @@
   </style>
 </head>
 <body style="background-color:rgba(248,254,229,255)">
-<div class="container right-panel-active">
+<div class="container">
   <div class="container__form container--signup">
     <form class="form" th:action="@{/sign-up}" th:object="${user}" method="post">
       <h2 class="form__title">Sign Up</h2>
@@ -314,14 +314,6 @@
       <button class="btn btn-primary btn-block text-uppercase mb-2" type="submit">Sign Up</button>
     </form>
 
-<!--
-    <form action="#" class="form" id="form1">
-      <input type="text" placeholder="User" class="input" />
-      <input type="email" placeholder="Email" class="input" />
-      <input type="password" placeholder="Password" class="input" />
-      <button class="btn">Sign Up</button>
-    </form>
--->
   </div>
 
   <!-- Sign In -->
@@ -369,35 +361,6 @@
 
 </script>
 
-
-
-<!--
-<div class="container-fluid h-100">
-  <div class="row h-100">
-    &lt;!&ndash; Left Half: Image &ndash;&gt;
-    <div class="col-md-6 d-none d-md-flex bg-image" style="background-image: url('/images/heart-hands.jpg');">
-      &lt;!&ndash; Image goes here &ndash;&gt;
-    </div>
-
-    &lt;!&ndash; Right Half: Form on a Card &ndash;&gt;
-    <div class="col-md-6 d-flex align-items-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 col-xl-12 mx-auto">
-            <div class="card rounded-lg shadow border-0 card-container">
-              <div class="card-body p-4 p-lg-5 text-black">
-                <h3 class="mb-4">Create an Account!</h3>
-                &lt;!&ndash; Form &ndash;&gt;
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    &lt;!&ndash; End Right Half &ndash;&gt;
-  </div>
-</div></div>
--->
 <div th:insert="fragments/footer.html :: footer"/>
 </body>
 </html>
