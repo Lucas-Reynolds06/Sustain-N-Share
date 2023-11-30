@@ -338,6 +338,36 @@
                         </div>
                     </div>
                 </div>
+                <div style="margin-top: 20px; margin-bottom: 20px;"></div>
+                <div class="container">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div style="padding:20px">
+                                    <h2>Your Items Others Want</h2>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <strong>Item</strong>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <strong>Donated Date</strong>
+                                        </div>
+                                    </div>
+                                    <div th:each="item : ${requestedItems}">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <span th:text="${item.name}"/>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <span th:text="${#dates.format(item.dateListed, 'MM/dd/yyyy')}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-1"></div>
         </div>
