@@ -50,11 +50,7 @@ public class SignUpController {
 
     @GetMapping("/sign-in")
     public String signIn(@AuthenticationPrincipal UserDetails userDetails, Model model) {
-        var authenticated = userDetails != null;
-        model.addAttribute("user", new SignInDto());
-        model.addAttribute("currentRoute", "sign-in");
-        model.addAttribute("isAuthenticated", authenticated);
-        return "sign-in";
+        return signUp(userDetails, model);
     }
 
     @PostMapping("/sign-in")
