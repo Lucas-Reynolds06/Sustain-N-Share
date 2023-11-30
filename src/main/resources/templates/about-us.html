@@ -6,20 +6,122 @@
   <title>Sustain N Share</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" th:href="@{/style.css}" />
 </head>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
+
+  html {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  .column {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .title {
+    color: grey;
+  }
+
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+</style>
 <body style="background-color:rgba(248,254,229,255)">
 <div th:insert="fragments/header.html :: header"/>
-<h1 style="text-align:center">About Us</h1>
 <div class="clearfix">
 <img src="images/sns-banner.png" alt="banner" width="1600px">
 </div>
 <div class="container">
-  <h2>About Us</h2>
-  <p>Sustain N Share: </p>
   <br>
-  <h2>Our Mission Statement</h2>
+  <h2 class="eco-header">About Us</h2>
+  <p>Welcome to Sustain N Share! Where communities come together to promote a greener and more sustainable way of living by listing your gently used items and sharing them with those in need. At Sustain N Share, we believe in the power of community, the joy of giving, and the importance of reducing our environmental footprint. Our platform is designed to make a positive impact on both the planet and the lives of those in your local community.</p>
+  <br>
+  <h2 class="eco-header">Our Mission Statement</h2>
   <p>Our mission is to create sustainable, waste-free neighborhoods by empowering residents to reduce, reuse, and recycle through a community-driven platform. We aim to transform the way communities view and handle waste, turning every residential area into a hub of environmental stewardship and resource sharing. Together, we're not just reducing waste — we're building a greener, more connected future.</p>
+  <br>
+  <h2 class="eco-header">Our Goals</h2>
+  <ul>
+    <li><strong>Community Connection:</strong> Sustain N Share is built on the idea that communities thrive when people come together. By sharing items within your community, you not only reduce waste but also strengthen the bonds that make your neighborhood unique.</li>
+    <li><strong>Environmental Impact:</strong> Every item that finds a new home through Sustain N Share is one less item in a landfill. By extending the life of products, we collectively contribute to a healthier planet for current and future generations.</li>
+    <li><strong>Empowering Change:</strong> Sustain N Share empowers individuals to take small, meaningful steps toward a more sustainable lifestyle. Whether you're giving or receiving, each interaction on our platform contributes to a positive change in consumption habits.</li>
+    <li><strong>Educate on Sustainability:</strong> Provide resources and information on sustainable living practices. Sustain N Share seeks to be a hub for learning about the environmental impact of consumption and how small lifestyle changes can contribute to a greener planet.</li>
+  </ul>
+  <p>By working towards these goals, Sustain N Share envisions a future where communities thrive in harmony with the environment, driven by a shared commitment to sustainability and responsible consumption. Join Sustain N Share today and be a part of the movement towards a greener, more sustainable future. Together, we can create a community where sharing is not just an action but a way of life.</p>
+  <br>
+  <h2 style="text-align:center" class="eco-header">Our Team</h2>
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <img src="/images/lucas.jpg" alt="Lucas" style="width:250px" class="center">
+        <div class="container">
+          <h2 class="eco-header">Lucas Reynolds</h2>
+          <p class="title">Co-Founder</p>
+          <p>"I wanted to create Sustain N Share to be the place where you can find new homes for your unused items and also help strengthen your community by promoting a sustainable way of living."</p>
+          <p>lucas@email.com</p>
+        </div>
+      </div>
+    </div>
 
+    <div class="column">
+      <div class="card">
+        <img src="/images/emily.jpg" alt="Emily" style="width:250px" class="center">
+        <div class="container">
+          <h2 class="eco-header">Emily Reynolds</h2>
+          <p class="title">Co-Founder</p>
+          <p>"I want Sustain N Share to be the place where you help bring your community together by exchanging your unwanted items with your neighbors and help those in need."</p>
+          <p>emily@email.com</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card">
+        <img src="/images/adison.jpg" alt="Adison" style="width:250px" class="center">
+        <div class="container">
+          <h2 class="eco-header">Adison Gordon</h2>
+          <p class="title">Co-Founder</p>
+          <p>"I wanted to make Sustain N Share a place where you can donate your unused items, find used things that you'd like, and also to help you learn how to make a positive impact on the environment."</p>
+          <p>adison@email.com</p>
+        </div>
+      </div>
+    </div>
+</div>
 </div>
 <div th:insert="fragments/footer.html :: footer"/>
 </body>
