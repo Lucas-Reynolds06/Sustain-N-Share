@@ -136,9 +136,21 @@ public class ItemsServiceImpl implements ItemsService {
     }
 
     @Override
-    public List<ItemDto> getRequestedItems(int userID) {
+    public List<ItemDto> getOtherPeopleRequestedItems(int userID) {
         var user = usersRepository.findById(userID).get();
         var transactions = transactionsRepository.getByDonorId(user.getUserID());
+        var ids = new ArrayList<Integer>();
+        for(var transaction : transactions) {
+            ids.add(transaction.getItem().getItemID());
+        }
+        var items = itemsRepository.findAllByItemIDIs(ids);
+        return itemsMapper.itemEntitiesToDtos(items);
+    }
+
+    @Override
+    public List<ItemDto> getMyRequestedItems(int userID) {
+        var user = usersRepository.findById(userID).get();
+        var transactions = transactionsRepository.getByReceiverId(user.getUserID());
         var ids = new ArrayList<Integer>();
         for(var transaction : transactions) {
             ids.add(transaction.getItem().getItemID());

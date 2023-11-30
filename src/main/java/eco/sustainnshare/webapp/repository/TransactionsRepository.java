@@ -15,4 +15,10 @@ public interface TransactionsRepository extends JpaRepository<Transactions, Inte
                     JOIN FETCH t.donor d 
                     WHERE d.userID =  ?1""")
     List<Transactions> getByDonorId(int donorId);
+
+    @Query(value = """
+                    SELECT t FROM Transactions t
+                    JOIN FETCH t.receiver r 
+                    WHERE r.userID =  ?1""")
+    List<Transactions> getByReceiverId(int donorId);
 }
