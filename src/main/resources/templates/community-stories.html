@@ -7,70 +7,182 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link rel="stylesheet" th:href="@{/style.css}" />
+  <style>
+    body{
+      background-color: #c2e2bf;
+    }
+    .container{
+      background-color: rgba(255, 255, 255, 0.7);
+      width: 2500px;
+    }
+    .card{
+      width: 600px;
+      box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .maintxt{
+      color: #1f1f1f;
+      font-weight: 500;
+      font-size: 14.5px;
+    }
+    .name{
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+    .para{
+      color: #8c8c8c;
+      font-size: 12px;
+      position: relative;
+      bottom: 3px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+  </style>
 </head>
 <body style="background-color:rgba(248,254,229,255)">
 <div th:insert="fragments/header.html :: header"/>
-<h1 style="text-align: center">Community Stories</h1>
-<hr>
-<div class="container">
-  <div class="clearfix">
-    <img src="/images/mom-with-boys.JPG" class="col-md-6 float-md-end mb-3 ms-md-3" alt="Bootstrap" style="width:400px;height:250px;margin:0px 100px">
-    <p><strong>Emily, Austin,TX</strong></p>
-    <p>
-      "My name is Emily, and I'm a single mother from Austin, Texas, with two wonderful but ever-growing kids. Keeping up with their clothing needs on a tight budget has always been a challenge. That's why I'm so thankful for this amazing website. It has been a lifesaver for us!
-      I stumbled upon the site during one of my late-night searches for affordable kids' clothes and shoes. The experience was a game-changer. Not only did I find clothes that perfectly fit my children, but I also didn't have to spend anything. The generosity of people donating these items is heartwarming, and the process was incredibly straightforward and respectful.
-      Now, my kids have clothes that they love, and I can breathe a little easier knowing that this community is here to support us. This website isn't just about free items; it's about the spirit of giving and the sense of community it fosters. From Austin, with immense gratitude, thank you!"
-    </p>
-    <hr>
-    <img src="/images/young-woman-with-coffee.jpg" class="col-md-6 float-md-end mb-3 ms-md-3" alt="Bootstrap" style="width:400px;height:250px;margin:0px 100px">
-    <p><strong>Michelle, Denver,CO</strong></p>
-    <p>
-      "My name is Michelle, and I'm from Denver, Colorado. Recently, I faced the heart-wrenching task of clearing out my beloved grandpa's home after his passing. His house was full of memories and items that he cherished – furniture, household goods, and so much more. It was emotionally challenging, and the thought of these items, still full of life, ending up in a landfill was unbearable to me.
-      That's when I found 'Sustain N' Share.' This website became a beacon of hope in a tough time. It provided a platform where I could donate these items, knowing they would find new homes and continue to be cherished. The process was respectful and straightforward, allowing me to honor my grandpa's memory by giving back to others.
-      I am so grateful to 'Sustain N' Share' for helping me turn a moment of loss into an opportunity for giving. It's comforting to know that parts of my grandpa's legacy will live on in other homes, bringing joy and utility to more people. From Denver, thank you for making this thoughtful, sustainable sharing possible."
-    </p>
-    <hr>
-    <img src="/images/man-smiling.jpg" class="col-md-6 float-md-end mb-3 ms-md-3" alt="Bootstrap" style="width:400px;height:250px;margin:0px 100px">
-    <p><strong>Alex, Seattle,WA</strong></p>
-    <p>
-      "My name is Alex, and I recently moved to Seattle for my first job after college. Starting out on my own was both exciting and daunting, especially since I had a tight budget and an empty apartment. Furniture? Kitchen supplies? I had none. That's when I stumbled upon 'Sustain N' Share,' and it truly was a game-changer for me.
-      The website was a treasure trove of gently used furniture and household items - exactly what someone like me needed. I was able to furnish my apartment without spending a fortune, finding everything from a comfy sofa to a sturdy dining table. The process was simple, and the people I interacted with were incredibly kind and helpful.
-      I am beyond grateful for 'Sustain N' Share.' It's not just about the items I received; it's about the sense of community and support that came with them. This site is a fantastic resource for anyone in a situation like mine, and I'm so happy I found it. Thanks to 'Sustain N' Share,' my new place in Seattle feels like a real home."
-    </p>
-    <hr>
-    <img src="/images/older-couple.jpg" class="col-md-6 float-md-end mb-3 ms-md-3" alt="Bootstrap" style="width:400px;height:250px;margin:0px 100px">
-    <p><strong>Eugene & Cathida, Sarasota,FL</strong></p>
-    <p>
-      "We are Eugene and Cathilda, and we've just entered our retirement years in sunny Sarasota, Florida. After decades of memories in our family home, we made the decision to downsize to a condo – a smaller, more manageable space for our new phase of life. However, with this exciting change came a significant challenge: we had accumulated far more belongings than we could possibly take with us.
-      That's when we discovered 'Sustain N' Share.' It was the perfect solution for us. Instead of the stress of selling or the heartbreak of throwing away our cherished items, we could pass them on to others who needed them. From furniture to kitchen appliances, each item found a new home through this wonderful platform.
-      The process was not only easy but also deeply fulfilling. Knowing that our belongings, which held so many memories for us, would now be part of someone else's home and life story brought us immense joy. 'Sustain N' Share' didn't just help us declutter; it gave us the opportunity to give back in a meaningful way as we start our new chapter in Sarasota. A heartfelt thank you from us!"
-    </p>
-    <hr>
-    <img src="/images/father-with-his-son.jpg" class="col-md-6 float-md-end mb-3 ms-md-3" alt="Bootstrap" style="width:400px;height:250px;margin:0px 100px">
-    <p><strong>Jake, Atlanta,GA</strong></p>
-    <p>
-      I'm Jake, and I live in Atlanta, Georgia. For years, I struggled with morbid obesity, a challenge that impacted every aspect of my life. Recently, I started a new journey with the help of a popular weight loss drug, and the results have been life-changing. I've lost a significant amount of weight, which feels like a major victory. However, this transformation brought its own set of challenges, particularly in terms of clothing.
-      As I shed pounds, my old clothes no longer fit, and they started to hang off me. However, since I was spending so much on the weight loss drug, I didn't have enough money to buy new clothes. That's when I found 'Sustain N' Share.' This website was a lifesaver. It allowed me to donate my larger clothes, which were in good condition but too big for me now. In return, I found clothes that actually fit my new size – and without the need to spend money I didn't have.
-      'Sustain N' Share' is more than just a platform for exchanging items; it's a community that understands and supports life's transitions. I'm grateful for the kindness of strangers who donated clothes that fit me, and I'm proud to pass on my own items to help others. Thanks to this incredible community, I can celebrate my weight loss journey without the added stress of affording new clothes. Thank you from the bottom of my heart, Atlanta!
-    </p>
-    <hr>
-    <img src="/images/mom-with-a-ton-of-kids.jpg" class="col-md-6 float-md-end mb-3 ms-md-3" alt="Bootstrap" style="width:400px;height:250px;margin:0px 100px">
-    <p><strong>McKayleigh, Provo,UT</strong></p>
-    <p>
-      "My name is McKayleigh, and I'm a stay-at-home mom in Provo, Utah, blessed with a beautiful, large family. As anyone with many children knows, managing the constant cycle of outgrown clothes and unused baby items is a never-ending task. My younger ones are growing up, leaving behind a trove of baby gear, while my older kids are in constant need of clothing that fits their growing frames.
-      That's where 'Sustain N' Share' became a godsend for us. It offered the perfect platform for both donating items we no longer needed and finding clothes for my older children. I was able to pass on the baby clothes and gear that held so many precious memories, knowing they would help other families. In turn, I found wonderful, gently used clothing for my older kids – and all without spending a penny.
-      I am so grateful for the sense of community and the practical help 'Sustain N' Share' has provided. It's more than just an exchange of items; it’s about supporting each other through different stages of life. This site has truly been a blessing for our family here in Provo. Thank you for helping us navigate the joys and challenges of a growing family!"
-    </p>
-    <hr>
-    <img src="/images/middle-aged-man.jpg" class="col-md-6 float-md-end mb-3 ms-md-3" alt="Bootstrap" style="width:230px;height:250px;margin:0px 100px">
-    <p><strong>David, Portland,OR</strong></p>
-    <p>
-      "I'm David, and I'm currently restarting my life in Portland, Oregon, after going through a tough divorce. It was a difficult period, and in the end, my ex-wife kept most of our belongings. Suddenly, I found myself in a new apartment with very little to call my own – no furniture, no kitchenware, virtually nothing from my previous life.
-      Feeling quite overwhelmed, I discovered 'Sustain N' Share,' and it turned out to be a silver lining during this hard time. The website allowed me to furnish my new apartment without the financial strain of buying everything new. I found everything from a comfortable bed to essential kitchen items, all gently used and free.
-      What amazed me the most was the generosity of the community on 'Sustain N' Share.' People were not just giving away things; they were helping others rebuild their lives. It's incredible how much this site helped me regain a sense of normalcy and home. I'm truly grateful to everyone who contributed to making my transition smoother. A heartfelt thank you from Portland!"
-    </p>
-    <hr>
 
+<div class="container mt-5">
+  <h1 style="text-align: center; color:#226b32">Community Stories</h1>
+  <hr>
+  <div class="d-flex justify-content-center py-3">
+
+    <div class="mr-2">
+
+      <div class="card">
+        <div class="px-2 py-2">
+          <span class="maintxt">"My name is Emily, and I'm a single mother from Austin, Texas, with two wonderful but ever-growing kids. Keeping up with their clothing needs on a tight budget has always been a challenge. That's why I'm so thankful for this amazing website. It has been a lifesaver for us!
+              I stumbled upon the site during one of my late-night searches for affordable kids' clothes and shoes. The experience was a game-changer. Not only did I find clothes that perfectly fit my children, but I also didn't have to spend anything. The generosity of people donating these items is heartwarming, and the process was incredibly straightforward and respectful.
+              Now, my kids have clothes that they love, and I can breathe a little easier knowing that this community is here to support us. This website isn't just about free items; it's about the spirit of giving and the sense of community it fosters. From Austin, with immense gratitude, thank you!"</span>
+            <div class="d-flex pt-3">
+            <div><img src="/images/mom-with-boys.JPG" width="250px" class="center">
+              <br>
+              <span class="name">Emily</span>
+              <p class="para">Austin, TX</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-3">
+        <div class="px-2 py-2">
+          <span class="maintxt">"My name is Michelle, and I'm from Denver, Colorado. Recently, I faced the heart-wrenching task of clearing out my beloved grandpa's home after his passing. His house was full of memories and items that he cherished – furniture, household goods, and so much more. It was emotionally challenging, and the thought of these items, still full of life, ending up in a landfill was unbearable to me.
+            That's when I found 'Sustain N' Share.' This website became a beacon of hope in a tough time. It provided a platform where I could donate these items, knowing they would find new homes and continue to be cherished. The process was respectful and straightforward, allowing me to honor my grandpa's memory by giving back to others.
+            I am so grateful to 'Sustain N' Share' for helping me turn a moment of loss into an opportunity for giving. It's comforting to know that parts of my grandpa's legacy will live on in other homes, bringing joy and utility to more people. From Denver, thank you for making this thoughtful, sustainable sharing possible."</span>
+          <div class="d-flex pt-3">
+            <div>
+              <img src="/images/young-woman-with-coffee.jpg" width="250px" class="center">
+              <br>
+              <span class="name">Michelle</span>
+              <p class="para">Denver, CO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-3">
+        <div class="px-2 py-2">
+          <span class="maintxt">
+            I'm Jake, and I live in Atlanta, Georgia. For years, I struggled with morbid obesity, a challenge that impacted every aspect of my life. Recently, I started a new journey with the help of a popular weight loss drug, and the results have been life-changing. I've lost a significant amount of weight, which feels like a major victory. However, this transformation brought its own set of challenges, particularly in terms of clothing.
+            As I shed pounds, my old clothes no longer fit, and they started to hang off me. However, since I was spending so much on the weight loss drug, I didn't have enough money to buy new clothes. That's when I found 'Sustain N' Share.' This website was a lifesaver. It allowed me to donate my larger clothes, which were in good condition but too big for me now. In return, I found clothes that actually fit my new size – and without the need to spend money I didn't have.
+            'Sustain N' Share' is more than just a platform for exchanging items; it's a community that understands and supports life's transitions. I'm grateful for the kindness of strangers who donated clothes that fit me, and I'm proud to pass on my own items to help others. Thanks to this incredible community, I can celebrate my weight loss journey without the added stress of affording new clothes. Thank you from the bottom of my heart, Atlanta!
+          </span>
+          <div class="d-flex pt-3">
+            <div>
+              <img src="/images/father-with-his-son.jpg" width="250px" class="center">
+              <br>
+              <span class="name">Jake</span>
+              <p class="para">Atlanta, GA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-3">
+        <div class="px-2 py-2">
+          <span class="maintxt">
+            "My name is McKayleigh, and I'm a stay-at-home mom in Provo, Utah, blessed with a beautiful, large family. As anyone with many children knows, managing the constant cycle of outgrown clothes and unused baby items is a never-ending task. My younger ones are growing up, leaving behind a trove of baby gear, while my older kids are in constant need of clothing that fits their growing frames.
+            That's where 'Sustain N' Share' became a godsend for us. It offered the perfect platform for both donating items we no longer needed and finding clothes for my older children. I was able to pass on the baby clothes and gear that held so many precious memories, knowing they would help other families. In turn, I found wonderful, gently used clothing for my older kids – and all without spending a penny.
+            I am so grateful for the sense of community and the practical help 'Sustain N' Share' has provided. It's more than just an exchange of items; it’s about supporting each other through different stages of life. This site has truly been a blessing for our family here in Provo. Thank you for helping us navigate the joys and challenges of a growing family!"
+          </span>
+            <div class="d-flex pt-3">
+            <div>
+              <img src="/images/mom-with-a-ton-of-kids.jpg" width="250px" class="center">
+              <br>
+              <span class="name">McKayleigh</span>
+              <p class="para">Provo, UT</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ml-2">
+
+      <div class="card">
+        <div class="px-2 py-2">
+          <span class="maintxt">"My name is Alex, and I recently moved to Seattle for my first job after college. Starting out on my own was both exciting and daunting, especially since I had a tight budget and an empty apartment. Furniture? Kitchen supplies? I had none. That's when I stumbled upon 'Sustain N' Share,' and it truly was a game-changer for me.
+            The website was a treasure trove of gently used furniture and household items - exactly what someone like me needed. I was able to furnish my apartment without spending a fortune, finding everything from a comfy sofa to a sturdy dining table. The process was simple, and the people I interacted with were incredibly kind and helpful.
+            I am beyond grateful for 'Sustain N' Share.' It's not just about the items I received; it's about the sense of community and support that came with them. This site is a fantastic resource for anyone in a situation like mine, and I'm so happy I found it. Thanks to 'Sustain N' Share,' my new place in Seattle feels like a real home."</span>
+          <div class="d-flex pt-3">
+            <div>
+              <img src="/images/man-smiling.jpg" width="250px" class="center">
+              <br>
+              <span class="name">Alex</span>
+              <p class="para">Seattle, WA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-3">
+        <div class="px-2 py-2">
+          <span class="maintxt">"We are Eugene and Cathilda, and we've just entered our retirement years in sunny Sarasota, Florida. After decades of memories in our family home, we made the decision to downsize to a condo – a smaller, more manageable space for our new phase of life. However, with this exciting change came a significant challenge: we had accumulated far more belongings than we could possibly take with us.
+            That's when we discovered 'Sustain N' Share.' It was the perfect solution for us. Instead of the stress of selling or the heartbreak of throwing away our cherished items, we could pass them on to others who needed them. From furniture to kitchen appliances, each item found a new home through this wonderful platform.
+            The process was not only easy but also deeply fulfilling. Knowing that our belongings, which held so many memories for us, would now be part of someone else's home and life story brought us immense joy. 'Sustain N' Share' didn't just help us declutter; it gave us the opportunity to give back in a meaningful way as we start our new chapter in Sarasota. A heartfelt thank you from us!"</span>
+          <div class="d-flex pt-3">
+            <div>
+              <img src="/images/older-couple.jpg" width="250px" class="center">
+              <br>
+              <span class="name">Eugene and Cathilda</span>
+              <p class="para">Sarasota, FL</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-3">
+        <div class="px-2 py-2">
+          <span class="maintxt">
+            "I'm David, and I'm currently restarting my life in Portland, Oregon, after going through a tough divorce. It was a difficult period, and in the end, my ex-wife kept most of our belongings. Suddenly, I found myself in a new apartment with very little to call my own – no furniture, no kitchenware, virtually nothing from my previous life.
+            Feeling quite overwhelmed, I discovered 'Sustain N' Share,' and it turned out to be a silver lining during this hard time. The website allowed me to furnish my new apartment without the financial strain of buying everything new. I found everything from a comfortable bed to essential kitchen items, all gently used and free.
+            What amazed me the most was the generosity of the community on 'Sustain N' Share.' People were not just giving away things; they were helping others rebuild their lives. It's incredible how much this site helped me regain a sense of normalcy and home. I'm truly grateful to everyone who contributed to making my transition smoother. A heartfelt thank you from Portland!"
+          </span>
+            <div class="d-flex pt-3">
+            <div>
+              <img src="/images/middle-aged-man.jpg" width="250px" class="center">
+              <br>
+              <span class="name">David</span>
+              <p class="para">Portland, OR</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div th:insert="fragments/footer.html :: footer"/>
