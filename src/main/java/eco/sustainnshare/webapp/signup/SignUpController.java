@@ -50,11 +50,7 @@ public class SignUpController {
 
     @GetMapping("/sign-in")
     public String signIn(@AuthenticationPrincipal UserDetails userDetails, Model model) {
-        var authenticated = userDetails != null;
-        model.addAttribute("user", new SignInDto());
-        model.addAttribute("currentRoute", "sign-in");
-        model.addAttribute("isAuthenticated", authenticated);
-        return "sign-in";
+        return signUp(userDetails, model);
     }
 
     @PostMapping("/sign-in")
@@ -73,6 +69,7 @@ public class SignUpController {
         var claimed = itemsService.getClaimedItemsByUser(user.getUserID());
         var impactPoints = itemsService.calculateImpactPoints(user.getUserID());
         var blogPostComments = blogPostService.getMyCommentedBlogs(user.getUserID());
+        var requestedItems = itemsService.getRequestedItems(user.getUserID());
         int commentCount = 0;
         for(var post : blogPostComments) {
             for(var comment: post.getComments()) {
@@ -89,6 +86,7 @@ public class SignUpController {
         model.addAttribute("impactPoints",impactPoints);
         model.addAttribute("isAuthenticated", authenticated);
         model.addAttribute("blogComments", commentCount);
+        model.addAttribute("requestedItems", requestedItems);
         return "profile";
     }
 
