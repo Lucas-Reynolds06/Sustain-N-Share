@@ -56,6 +56,7 @@ public class SecurityConfig {
                 "/search-items",
                 "/item/**",
                 "/avitars/**",
+                "/videos/**",
                 "/style.css");
         http.csrf(csrf->
             csrf.ignoringRequestMatchers(toH2Console())

@@ -30,7 +30,7 @@ public class SignUpController {
         try {
             var user = userService.createUser(userDto);
             redirectAttributes.addFlashAttribute("registrationSuccess", "Registration successful. Please sign in.");
-            return "redirect:/sign-in";
+            return "redirect:/sign-up";
         } catch(RuntimeException e) {
             model.addAttribute("error", e.getMessage());
             return "signup-failure";
