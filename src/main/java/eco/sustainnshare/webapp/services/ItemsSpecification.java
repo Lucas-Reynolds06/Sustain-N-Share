@@ -25,7 +25,7 @@ public class ItemsSpecification {
     }
     public static Specification<Items> hasCategory(Integer category){
         return ((root, query, criteriaBuilder) -> {
-            if (category == null){
+            if (category == 0){
                 return criteriaBuilder.isTrue(criteriaBuilder.literal(true));
             }
             return criteriaBuilder.equal(root.join("category").get("categoryID"),category);
