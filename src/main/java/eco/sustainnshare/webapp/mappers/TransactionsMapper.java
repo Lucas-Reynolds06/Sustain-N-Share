@@ -7,6 +7,8 @@ import eco.sustainnshare.webapp.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 @RequiredArgsConstructor
 public class TransactionsMapper {
@@ -20,6 +22,19 @@ public class TransactionsMapper {
                 .status(transactionDto.getStatus())
                 .dateInitiated(transactionDto.getDateInitiated())
                 .dateCompleted(transactionDto.getDateCompleted())
+                .build();
+    }
+
+    public TransactionDto transactionEntityToDto(Transactions transactions) {
+        return TransactionDto.builder()
+                .transactionID(transactions.getTransactionID())
+                .itemID(transactions.getItem().getItemID())
+                .donorID(transactions.getDonor().getUserID())
+                .receiverID(transactions.getReceiver().getUserID())
+                .dateInitiated(transactions.getDateInitiated())
+                .dateCompleted(transactions.getDateCompleted())
+                .status(transactions.getStatus())
+                .requesterScreenName(transactions.getReceiver().getScreenName())
                 .build();
     }
 }

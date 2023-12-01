@@ -7,7 +7,7 @@ import eco.sustainnshare.webapp.entity.Items;
 import eco.sustainnshare.webapp.entity.UserBadges;
 import eco.sustainnshare.webapp.entity.Users;
 import eco.sustainnshare.webapp.mappers.ItemsMapper;
-import eco.sustainnshare.webapp.repository.CategoriesRepository;
+import eco.sustainnshare.webapp.mappers.TransactionsMapper;
 import eco.sustainnshare.webapp.repository.ItemsRepository;
 import eco.sustainnshare.webapp.repository.TransactionsRepository;
 import eco.sustainnshare.webapp.repository.UsersRepository;
@@ -27,6 +27,7 @@ public class ItemsServiceImpl implements ItemsService {
     private final UsersRepository usersRepository;
     private final BadgeService badgeService;
     private final TransactionsRepository transactionsRepository;
+    private final TransactionsMapper transactionsMapper;
     @Override
     public Items getItemByID(int id) {
         var item = itemsRepository.findById(id);
@@ -158,4 +159,31 @@ public class ItemsServiceImpl implements ItemsService {
         var items = itemsRepository.findAllByItemIDIs(ids);
         return itemsMapper.itemEntitiesToDtos(items);
     }
+
+    @Override
+    public TransactionDto getRequestTransactionByItem(int itemId) {
+        return transactionsMapper.transactionEntityToDto(transactionsRepository.getByItemId(itemId));
+    }
+
+    @Override
+    public ItemDto getItemById(Integer id) {
+        return itemsMapper.itemEntityToDto(itemsRepository.findById(id).get());
+    }
+
+    @Override
+    public void approveItemByTransactionId(int transactionID) {
+        var transaction = transactionsRepository.findById(transactionID).get();
+        transaction.setStatus("Approved");
+        transaction.setDateCompleted(new Date());
+        transactionsRepository.save(transaction);
+    }
+
+    @Override
+    public void denyItemByTransactionId(int transactionID) {
+        var transaction = transactionsRepository.findById(transactionID).get();
+        transaction.setStatus("Denied");
+        transaction.setDateCompleted(new Date());
+        transactionsRepository.save(transaction);
+    }
+
 }

@@ -19,4 +19,5 @@ public class TransactionDto {
     private Date dateInitiated;
     private Date dateCompleted;
     private String status;
+    private String requesterScreenName;
 }
