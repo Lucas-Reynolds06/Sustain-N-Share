@@ -111,7 +111,21 @@ public class ItemsServiceImpl implements ItemsService {
     public List<ItemDto> getSharedItemsByUser(int userID) {
         var user = usersRepository.findById(userID).get();
         var items = itemsRepository.findAllByDonor(user);
-        return itemsMapper.itemEntitiesToDtos(items);
+        var transactions = transactionsRepository.getByDonorId(userID);
+        var transactionDto = transactionsMapper.transactionsEntityToDtos(transactions);
+        var transactionMap = new HashMap<Integer, List<TransactionDto>>();
+        for(var transaction : transactionDto) {
+            if (transactionMap.containsKey(transaction.getItemID())){
+                transactionMap.get(transaction.getItemID()).add(transaction);
+            } else {
+                transactionMap.put(transaction.getItemID(), List.of(transaction));
+            }
+        }
+        var itemMapper =  itemsMapper.itemEntitiesToDtos(items);
+        for(var item: itemMapper) {
+            item.setTransactions(transactionMap.get(item.getItemID()));
+        }
+        return itemMapper;
     }
 
     @Override
@@ -140,24 +154,47 @@ public class ItemsServiceImpl implements ItemsService {
     public List<ItemDto> getOtherPeopleRequestedItems(int userID) {
         var user = usersRepository.findById(userID).get();
         var transactions = transactionsRepository.getByDonorId(user.getUserID());
+        var transactionMapped = transactionsMapper.transactionsEntityToDtos(transactions);
         var ids = new ArrayList<Integer>();
-        for(var transaction : transactions) {
-            ids.add(transaction.getItem().getItemID());
+        var transactionMap = new HashMap<Integer, List<TransactionDto>>();
+        for(var transaction : transactionMapped) {
+            ids.add(transaction.getItemID());
+            if(transactionMap.containsKey(transaction.getItemID())){
+                transactionMap.get(transaction.getItemID()).add(transaction);
+            } else {
+                transactionMap.put(transaction.getItemID(), List.of(transaction));
+            }
         }
         var items = itemsRepository.findAllByItemIDIs(ids);
-        return itemsMapper.itemEntitiesToDtos(items);
+        var itemMapper =  itemsMapper.itemEntitiesToDtos(items);
+        for(var item: itemMapper) {
+            item.setTransactions(transactionMap.get(item.getItemID()));
+        }
+        return itemMapper;
+
     }
 
     @Override
     public List<ItemDto> getMyRequestedItems(int userID) {
         var user = usersRepository.findById(userID).get();
         var transactions = transactionsRepository.getByReceiverId(user.getUserID());
+        var transactionMapped = transactionsMapper.transactionsEntityToDtos(transactions);
         var ids = new ArrayList<Integer>();
-        for(var transaction : transactions) {
-            ids.add(transaction.getItem().getItemID());
+        var transactionMap = new HashMap<Integer, List<TransactionDto>>();
+        for(var transaction : transactionMapped) {
+            ids.add(transaction.getItemID());
+            if(transactionMap.containsKey(transaction.getItemID())){
+                transactionMap.get(transaction.getItemID()).add(transaction);
+            } else {
+                transactionMap.put(transaction.getItemID(), List.of(transaction));
+            }
         }
         var items = itemsRepository.findAllByItemIDIs(ids);
-        return itemsMapper.itemEntitiesToDtos(items);
+        var itemMapper =  itemsMapper.itemEntitiesToDtos(items);
+        for(var item: itemMapper) {
+            item.setTransactions(transactionMap.get(item.getItemID()));
+        }
+        return itemMapper;
     }
 
     @Override
