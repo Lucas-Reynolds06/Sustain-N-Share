@@ -133,4 +133,17 @@ public class AccountController {
         itemsService.denyItemByTransactionId(id);
         return "redirect:/profile";
     }
+
+    @GetMapping("/view-my-requested-item/{id}")
+    public String getRequestedItem(@AuthenticationPrincipal UserDetails userDetails, Model model, @PathVariable("id") Integer id){
+        var authenticated = userDetails != null;
+        var item = itemsService.getItemById(id);
+        var transaction = itemsService.getRequestTransactionByItem(id);
+        model.addAttribute("currentRoute", "profile");
+        model.addAttribute("item", item);
+        model.addAttribute("transaction", transaction);
+        model.addAttribute("isAuthenticated", authenticated);
+        return "view-requested-item";
+    }
+
 }
