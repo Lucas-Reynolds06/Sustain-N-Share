@@ -106,12 +106,12 @@
         <p th:utext="${blogPost.content}"></p>
         <div th:if="${isAuthenticated}">
             <div class="row">
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <button id="likeButton" th:data-postid="${blogPost.blogPostId}" class="btn btn-outline-primary">
                         <i class="bi bi-hand-thumbs-up"></i> Like
                     </button>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-5">
                     <button id="helpfulButton" th:data-postid="${blogPost.blogPostId}" class="btn btn-outline-primary">
                         <i class="bi bi-lightbulb"></i> This is Helpful
                     </button>
