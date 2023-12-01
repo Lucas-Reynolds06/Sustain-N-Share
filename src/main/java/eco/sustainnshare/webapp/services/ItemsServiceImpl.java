@@ -118,7 +118,9 @@ public class ItemsServiceImpl implements ItemsService {
             if (transactionMap.containsKey(transaction.getItemID())){
                 transactionMap.get(transaction.getItemID()).add(transaction);
             } else {
-                transactionMap.put(transaction.getItemID(), List.of(transaction));
+                var transactionList = new ArrayList<TransactionDto>();
+                transactionList.add(transaction);
+                transactionMap.put(transaction.getItemID(), transactionList);
             }
         }
         var itemMapper =  itemsMapper.itemEntitiesToDtos(items);
@@ -162,7 +164,8 @@ public class ItemsServiceImpl implements ItemsService {
             if(transactionMap.containsKey(transaction.getItemID())){
                 transactionMap.get(transaction.getItemID()).add(transaction);
             } else {
-                transactionMap.put(transaction.getItemID(), List.of(transaction));
+                var transactionList = new ArrayList<TransactionDto>();
+                transactionList.add(transaction);
             }
         }
         var items = itemsRepository.findAllByItemIDIs(ids);
@@ -186,7 +189,8 @@ public class ItemsServiceImpl implements ItemsService {
             if(transactionMap.containsKey(transaction.getItemID())){
                 transactionMap.get(transaction.getItemID()).add(transaction);
             } else {
-                transactionMap.put(transaction.getItemID(), List.of(transaction));
+                var transactionList = new ArrayList<TransactionDto>();
+                transactionList.add(transaction);
             }
         }
         var items = itemsRepository.findAllByItemIDIs(ids);
