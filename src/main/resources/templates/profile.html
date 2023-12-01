@@ -431,14 +431,16 @@
                                         </div>
                                     </div>
                                     <div th:each="item : ${myRequestedItem}">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <span th:text="${item.name}"/>
+                                        <a th:href="@{/view-my-requested-item/{id}(id=${item.itemID})}" style="text-decoration: none">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <span th:text="${item.name}"/>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <span th:text="${#dates.format(item.dateListed, 'MM/dd/yyyy')}"></span>
+                                                </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <span th:text="${#dates.format(item.dateListed, 'MM/dd/yyyy')}"></span>
-                                            </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
