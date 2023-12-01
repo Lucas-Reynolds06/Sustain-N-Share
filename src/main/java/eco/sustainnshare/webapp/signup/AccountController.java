@@ -1,6 +1,8 @@
 package eco.sustainnshare.webapp.signup;
 
+import eco.sustainnshare.webapp.dto.ItemDto;
 import eco.sustainnshare.webapp.dto.SignInDto;
+import eco.sustainnshare.webapp.dto.TransactionDto;
 import eco.sustainnshare.webapp.dto.UserDto;
 import eco.sustainnshare.webapp.services.*;
 import lombok.RequiredArgsConstructor;
@@ -9,12 +11,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
-public class SignUpController {
+public class AccountController {
 
     private final UsersService userService;
     private final StateService stateService;
@@ -94,6 +97,40 @@ public class SignUpController {
     public String updateProfile(Model model, UserDto userDto,RedirectAttributes redirectAttributes) {
         UserDto user = userService.updateUser(userDto);
         redirectAttributes.addFlashAttribute("registrationSuccess", "Registration successful. Please sign in.");
+        return "redirect:/profile";
+    }
+
+    @GetMapping("/view-my-donated-item/{id}")
+    public String searchItems(@AuthenticationPrincipal UserDetails userDetails, @PathVariable("id") Integer id, Model model){
+        var authenticated = userDetails != null;
+        var item = itemsService.getItemById(id);
+        model.addAttribute("currentRoute", "profile");
+        model.addAttribute("item", item);
+        model.addAttribute("isAuthenticated", authenticated);
+        return "view-item";
+    }
+
+    @GetMapping("/view-items-others-want/{id}")
+    public String searchOthersItems(@AuthenticationPrincipal UserDetails userDetails, @PathVariable("id") Integer id, Model model){
+        var authenticated = userDetails != null;
+        var item = itemsService.getItemById(id);
+        var transaction = itemsService.getRequestTransactionByItem(id);
+        model.addAttribute("currentRoute", "profile");
+        model.addAttribute("item", item);
+        model.addAttribute("transaction", transaction);
+        model.addAttribute("isAuthenticated", authenticated);
+        return "view-others-item";
+    }
+
+    @PostMapping("/approve-item/{id}")
+    public String approveItem(Model model, RedirectAttributes redirectAttributes, TransactionDto transactionDto, @PathVariable("id") Integer id) {
+        itemsService.approveItemByTransactionId(id);
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/deny-item/{id}")
+    public String denyItem(Model model, RedirectAttributes redirectAttributes, @PathVariable("id") Integer id) {
+        itemsService.denyItemByTransactionId(id);
         return "redirect:/profile";
     }
 }

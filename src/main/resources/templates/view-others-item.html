@@ -68,18 +68,47 @@
                         <h3 th:text="'Donated By:' + ${item.donor.screenName}"/>
                         <p th:text="'Description: ' + ${item.description}" />
                         <p th:text="'Listed On: ' + ${#dates.format(item.dateListed, 'MM/dd/yyyy')}" />
-                        <div th:if="${!isAuthenticated}">
-                            <h3>You must login to claim item!</h3>
-                            <a href="/sign-up" class="btn btn-primary">Sign In</a>
+                        <p th:text="'Requested By: ' + ${transaction.requesterScreenName}" />
+                        <div th:if="${transaction.status == 'Approved'}">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h3>You approved this request</h3>
+                                </div>
+                            </div>
+                            <a href="/profile" class="btn">Back</a>
+
                         </div>
-                        <form action="#" th:if="${isAuthenticated}" th:action="@{/item-request/{id}(id=${item.itemID})}" method="post">
-                            <button type="submit" class="btn btn-primary">I want it!</button>
-                        </form>
+                        <div th:if="${transaction.status == 'Denied'}">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h3>You denied this request</h3>
+                                </div>
+                            </div>
+                            <a href="/profile" class="btn">Back</a>
+
+                        </div>
+                        <div th:if="${transaction.status == 'Requested'}">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <form action="#" th:action="@{/approve-item/{id}(id=${transaction.transactionID})}" method="post" >
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Approve</button>
+                                    </form>
+                                </div>
+                                <div class="col-md-4">
+                                    <form action="#" th:action="@{/deny-item/{id}(id=${transaction.transactionID})}" method="post">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Deny</button>
+                                    </form>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="/profile" class="btn">Back</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-md-4">
-                    <img th:src="@{'~/item-images/' + ${item.itemID} + '/' + ${item.itemImage}}" height="200" class="img-fluid">
+                    <img th:src="@{'~/item-images/' + ${item.itemID} + '/' + ${item.itemImage}}" height="200" class="img-fluid" style="margin-top:20px;">
                 </div>
             </div>
         </div>

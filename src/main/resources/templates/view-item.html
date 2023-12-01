@@ -72,9 +72,7 @@
                             <h3>You must login to claim item!</h3>
                             <a href="/sign-up" class="btn btn-primary">Sign In</a>
                         </div>
-                        <form action="#" th:if="${isAuthenticated}" th:action="@{/item-request/{id}(id=${item.itemID})}" method="post">
-                            <button type="submit" class="btn btn-primary">I want it!</button>
-                        </form>
+                        <a href="/profile" class="btn">Back to Profile</a>
                     </div>
                 </div>
 
