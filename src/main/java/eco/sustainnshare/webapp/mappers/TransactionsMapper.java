@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -36,5 +37,9 @@ public class TransactionsMapper {
                 .status(transactions.getStatus())
                 .requesterScreenName(transactions.getReceiver().getScreenName())
                 .build();
+    }
+
+    public List<TransactionDto> transactionsEntityToDtos(List<Transactions> transactions) {
+        return transactions.stream().map(this::transactionEntityToDto).toList();
     }
 }

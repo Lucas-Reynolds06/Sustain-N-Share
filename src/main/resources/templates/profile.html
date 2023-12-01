@@ -46,7 +46,7 @@
             overflow: hidden;
             position: relative;
             z-index: 10;
-            top: -90px;
+            top: -116px;
         }
         .image-container img {
             position: absolute;
@@ -95,6 +95,35 @@
             outline: none;
         }
 
+        .card {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .card-header {
+            background-color: #e9f5e9;
+            border-bottom: 1px solid #d4e2d4;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #3a5f41;
+        }
+        .card-body {
+            padding: 15px;
+        }
+        .card a {
+            color: #4c6b50;
+            text-decoration: none;
+        }
+        .card a:hover {
+            color: #3a5f41;
+        }
+        .item-row {
+            border-top: 1px solid #e6e6e6;
+            padding: 10px 0;
+        }
+        .item-row:first-child {
+            border-top: none;
+        }
     </style>
 </head>
 <body style="background-color:rgba(248,254,229,255)">
@@ -122,10 +151,12 @@
                                     </div>
                                     <div class="col-md-2"></div>
                                     <div class="col-md-3">
-                                        <a href="/create-item" class="btn btn-primary">Donate Item</a>
+                                        <form method="GET" action="/create-item">
+                                            <button class="btn btn-primary" type="submit">Donate Item</button>
+                                        </form>
                                     </div>
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-3">
                                         <form method="POST" action="/log-out">
                                             <button class="btn btn-primary" type="submit">Sign Out</button>
                                         </form>
@@ -354,31 +385,19 @@
             <div class="col-md-3">
                 <div class="container">
                     <div class="card">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div style="padding:20px">
-                                    <h2>My Donated Items</h2>
+                        <div class="card-header">My Donated Items</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6"><strong>Item</strong></div>
+                                <div class="col-sm-6"><strong>Donated Date</strong></div>
+                            </div>
+                            <div th:each="item : ${items}">
+                                <a th:href="@{/view-my-donated-item/{id}(id=${item.itemID})}" class="item-row">
                                     <div class="row">
-                                        <div class="col-sm-6">
-                                            <strong>Item</strong>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <strong>Donated Date</strong>
-                                        </div>
+                                        <div class="col-sm-6" th:text="${item.name}"></div>
+                                        <div class="col-sm-6" th:text="${#dates.format(item.dateListed, 'MM/dd/yyyy')}"></div>
                                     </div>
-                                    <div th:each="item : ${items}">
-                                        <a th:href="@{/view-my-donated-item/{id}(id=${item.itemID})}" style="text-decoration: none">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <span th:text="${item.name}"/>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <span th:text="${#dates.format(item.dateListed, 'MM/dd/yyyy')}"></span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -386,31 +405,25 @@
                 <div style="margin-top: 20px; margin-bottom: 20px;"></div>
                 <div class="container">
                     <div class="card">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div style="padding:20px">
-                                    <h2>Your Items Others Want</h2>
+                        <div class="card-header">Your Items Others Want</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4"><strong>Item</strong></div>
+                                <div class="col-sm-4"><strong>Donated Date</strong></div>
+                                <div class="col-sm-4"><strong>Status</strong></div>
+
+                            </div>
+                            <div th:each="item : ${otherPeopleRequestedItems}">
+                                <a th:href="@{/view-items-others-want/{id}(id=${item.itemID})}" class="item-row">
                                     <div class="row">
-                                        <div class="col-sm-6">
-                                            <strong>Item</strong>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <strong>Donated Date</strong>
-                                        </div>
-                                    </div>
-                                    <div th:each="item : ${otherPeopleRequestedItems}">
-                                        <a th:href="@{/view-items-others-want/{id}(id=${item.itemID})}" style="text-decoration: none">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <span th:text="${item.name}"/>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <span th:text="${#dates.format(item.dateListed, 'MM/dd/yyyy')}"></span>
-                                                </div>
+                                        <div class="col-sm-4" th:text="${item.name}"></div>
+                                        <div class="col-sm-4" th:text="${#dates.format(item.dateListed, 'MM/dd/yyyy')}"></div>
+                                        <div class="col-sm-4" th:each="obj : ${item.transactions}" >
+                                            <div th:if="${obj.status} == 'Approved'" th:text="Approved">
                                             </div>
-                                        </a>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -418,31 +431,23 @@
                 <div style="margin-top: 20px; margin-bottom: 20px;"></div>
                 <div class="container">
                     <div class="card">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div style="padding:20px">
-                                    <h2>Items I Want</h2>
+                        <div class="card-header">Items I Want</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4"><strong>Item</strong></div>
+                                <div class="col-sm-4"><strong>Donated Date</strong></div>
+                                <div class="col-sm-4"><strong>Status</strong></div>
+                            </div>
+                            <div th:each="item : ${myRequestedItem}">
+                                <a th:href="@{/view-my-requested-item/{id}(id=${item.itemID})}" class="item-row">
                                     <div class="row">
-                                        <div class="col-sm-6">
-                                            <strong>Item</strong>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <strong>Donated Date</strong>
+                                        <div class="col-sm-4" th:text="${item.name}"></div>
+                                        <div class="col-sm-4" th:text="${#dates.format(item.dateListed, 'MM/dd/yyyy')}"></div>
+                                        <div class="col-sm-4" th:each="obj : ${item.transactions}">
+                                            <div th:if="${obj.receiverID} == ${user.userID}" th:text="${obj.status}"></div>
                                         </div>
                                     </div>
-                                    <div th:each="item : ${myRequestedItem}">
-                                        <a th:href="@{/view-my-requested-item/{id}(id=${item.itemID})}" style="text-decoration: none">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <span th:text="${item.name}"/>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <span th:text="${#dates.format(item.dateListed, 'MM/dd/yyyy')}"></span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>

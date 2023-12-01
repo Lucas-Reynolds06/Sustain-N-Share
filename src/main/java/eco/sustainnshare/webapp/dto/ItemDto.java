@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,4 +24,5 @@ public class ItemDto {
     private Date dateListed;
     private String location;
     private String itemImage;
+    private List<TransactionDto> transactions;
 }
